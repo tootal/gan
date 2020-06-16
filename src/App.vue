@@ -1,15 +1,16 @@
 <template>
   <div id="app">
+    <gan-head></gan-head>
     <p>这里是首页</p>
-    <el-button>测试Element按钮</el-button>
   </div>
 </template>
 
 <script>
-import Vue from 'vue'
-import { Button } from 'element-ui'
-Vue.use(Button)
+import GanHead from './layouts/GanHead.vue'
 export default {
   name: 'App',
+  components: {
+    GanHead,
+  }
 }
 </script>

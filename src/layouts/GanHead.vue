@@ -1,0 +1,17 @@
+<template>
+  <div>
+    <el-row>
+      <el-col :span="24">
+        <div class="border border-primary">这里是网页头部</div>
+      </el-col>
+    </el-row>
+  </div>
+</template>
+<script>
+export default {
+  name: 'GanHead',
+}
+</script>
+<style lang="scss" scoped>
+@import '~bootstrap/scss/bootstrap';
+</style>
