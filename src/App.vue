@@ -1,16 +1,15 @@
 <template>
   <div id="app">
-    <gan-head></gan-head>
-    <p>这里是首页</p>
+    <gan-main></gan-main>
   </div>
 </template>
 
 <script>
-import GanHead from './layouts/GanHead.vue'
+import GanMain from './layouts/GanMain.vue'
 export default {
   name: 'App',
   components: {
-    GanHead,
+    GanMain,
   }
 }
 </script>

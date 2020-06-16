@@ -1,0 +1,21 @@
+html {
+  box-sizing: border-box;
+  -ms-overflow-style: scrollbar;
+}
+
+body {
+  margin: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+.border {
+  border: 1px solid #dee2e6!important;
+}
+.border-primary {
+  border-color: #007bff!important;
+}
