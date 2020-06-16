@@ -12,6 +12,11 @@ export default {
   name: 'GanHead',
 }
 </script>
-<style lang="scss" scoped>
-@import '~bootstrap/scss/bootstrap';
+<style scoped>
+.border {
+  border: 1px solid #dee2e6!important;
+}
+.border-primary {
+  border-color: #007bff!important;
+}
 </style>
