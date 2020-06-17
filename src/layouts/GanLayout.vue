@@ -27,7 +27,7 @@ export default {
 };
 </script>
 <style scoped>
-.el-header {
+.el-header, .el-main {
   padding: 0;
 }
 </style>
