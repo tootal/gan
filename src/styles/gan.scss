@@ -60,12 +60,6 @@ body {
   justify-content: center;
 }
 
-@media only screen and (max-width: 991px) {
-  .bg-white-sm-and-down {
-    background-color: white;
-  }
-}
-
 .fit-contain {
   object-fit: contain;
 }

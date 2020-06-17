@@ -1,26 +1,29 @@
 <template>
-  <el-row type="flex" align="middle" class="h-100">
-    <el-col :span="2" :sm="4" :xs="4" class="h-100">
+  <div class="head">
+    <div class="head-bg"></div>
+    <div class="head-logo">
       <router-link to="/">
-      <img :src="require('../assets/danboard.png')" alt="Danboard" class="h-100 fit-contain"/>
+        <img
+          :src="require('../assets/danboard.png')"
+          alt="Danboard"
+          class="fit-contain"
+          height="50px"
+        />
       </router-link>
-    </el-col>
-    <el-col :span="18" :sm="17" :xs="16">
-      <div></div>
-    </el-col>
-    <el-col :span="4" class="text-right hidden-sm-and-down" style="padding-right: 20px">
+    </div>
+    <div class="head-button hidden-sm-and-down">
       <el-button-group>
         <el-button>登录</el-button>
         <el-button type="primary" plain>注册</el-button>
       </el-button-group>
-    </el-col>
-    <el-col :sm="3" :xs="4" class="hidden-md-and-up">
+    </div>
+    <div class="head-menu hidden-md-and-up">
       <el-button icon="el-icon-menu" class="menu-button" @click="drawer = true"></el-button>
-      <el-drawer title="菜单" :visible.sync="drawer" :with-header="false" size="60%">
-        <gan-menu :main="false"></gan-menu>
-      </el-drawer>
-    </el-col>
-  </el-row>
+    </div>
+    <el-drawer title="菜单" :visible.sync="drawer" :with-header="false" size="60%">
+      <gan-menu :main="false"></gan-menu>
+    </el-drawer>
+  </div>
 </template>
 <script>
 import GanMenu from "../layouts/GanMenu.vue";
@@ -43,4 +46,31 @@ export default {
   padding-left: 12px;
   padding-right: 12px;
 }
+.head-bg {
+  position: fixed;
+  top: 0;
+  height: 50px;
+  width: 100%;
+  background-color: white;
+  z-index: 9;
+}
+.head-logo {
+  position: fixed;
+  top: 0;
+}
+.head-button {
+  position: fixed;
+  top: 5px;
+  right: 10px;
+}
+.head-menu {
+  position: fixed;
+  top: 2px;
+  right: 10px;
+}
+
+.head-logo, .head-button, .head-menu {
+  z-index: 11;
+}
+
 </style>

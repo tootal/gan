@@ -1,8 +1,6 @@
 <template>
   <el-container>
-    <el-header height="50px" class="top-head bg-white-sm-and-down">
-      <gan-head></gan-head>
-    </el-header>
+    <gan-head></gan-head>
     <el-main>
       <gan-main>
         <slot></slot>
@@ -27,15 +25,12 @@ export default {
 };
 </script>
 <style scoped>
-.el-header, .el-main {
+.el-header,
+.el-main {
   padding: 0;
 }
 .el-main {
+  margin-top: 50px;
   overflow: visible;
-}
-.top-head {
-  position: sticky;
-  top: 0;
-  z-index: 1010;
 }
 </style>
