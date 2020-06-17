@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <gan-layout>
-      <router-view></router-view>
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
     </gan-layout>
   </div>
 </template>
