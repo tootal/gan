@@ -15,27 +15,22 @@
     <el-col :xs="4" class="hidden-sm-and-up">
       <el-button icon="el-icon-menu" class="menu-button" @click="drawer = true"></el-button>
       <el-drawer title="菜单" :visible.sync="drawer" :with-header="false" size="60%">
-        <el-menu default-active="index" router="true">
-          <el-menu-item
-            v-for="(value, name) in this.$root.menus"
-            :index="name"
-            :key="name"
-          >{{ value }}</el-menu-item>
-          <el-divider></el-divider>
-          <el-menu-item index="login">登录</el-menu-item>
-          <el-menu-item index="register">注册</el-menu-item>
-        </el-menu>
+        <gan-menu :main="false"></gan-menu>
       </el-drawer>
     </el-col>
   </el-row>
 </template>
 <script>
+import GanMenu from "../layouts/GanMenu.vue";
 export default {
   name: "GanHead",
   data() {
     return {
       drawer: false
     };
+  },
+  components: {
+    GanMenu
   }
 };
 </script>

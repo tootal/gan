@@ -6,20 +6,17 @@
         <div>GAN.TOOTAL.XYZ</div>
       </el-col>
     </el-row>
-    <el-menu
-      mode="horizontal"
-      default-active="index"
-      router="true"
-      class="d-flex justify-content-center hidden-xs-only"
-    >
-      <el-menu-item v-for="(value, name) in this.$root.menus" :index="name" :key="name">{{ value }}</el-menu-item>
-    </el-menu>
+    <gan-menu></gan-menu>
     <slot></slot>
   </div>
 </template>
 <script>
+import GanMenu from './GanMenu.vue'
 export default {
-  name: "GanMain"
+  name: "GanMain",
+  components: {
+    GanMenu
+  }
 };
 </script>
 <style scoped>
