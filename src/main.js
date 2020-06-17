@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import BaiduMap from 'vue-baidu-map'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import App from './App.vue'
@@ -10,6 +11,9 @@ const GanForum = () => import('./pages/GanForum.vue')
 const GanLocation = () => import('./pages/GanLocation.vue')
 
 Vue.use(VueRouter)
+Vue.use(BaiduMap, {
+  ak: '8PaUE4G35Llhnl3CHPTBhqu6oK2aIHXD'
+})
 Vue.use(ElementUI)
 Vue.config.productionTip = false
 
