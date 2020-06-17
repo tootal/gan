@@ -26,7 +26,7 @@ export default {
       mainClass: [
         'd-flex',
         'justify-content-center',
-        'hidden-xs-only'
+        'hidden-sm-and-down'
       ],
     }
   },
@@ -37,3 +37,9 @@ export default {
   }
 };
 </script>
+<style scoped>
+.el-menu-item {
+  height: 50px;
+  line-height: 50px;
+}
+</style>

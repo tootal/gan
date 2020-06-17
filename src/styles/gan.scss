@@ -28,6 +28,9 @@ body {
   text-align: center;
 }
 
+.text-right {
+  text-align: right;
+}
 .h-100 {
   height: 100%;
 }
@@ -55,4 +58,10 @@ body {
 
 .justify-content-center {
   justify-content: center;
+}
+
+@media only screen and (max-width: 991px) {
+  .bg-white-sm-and-down {
+    background-color: white;
+  }
 }

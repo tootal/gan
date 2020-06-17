@@ -1,11 +1,25 @@
 <template>
-    <el-carousel :height="autoHeight" style="max-width: 1024px" class="mx-auto"
-      indicator-position="outside">
+  <div>
+    <el-carousel
+      :height="autoHeight"
+      style="max-width: 1024px"
+      class="mx-auto"
+      indicator-position="outside"
+    >
       <el-carousel-item v-for="i in pics" :key="i">
-        <el-image :src="require('../assets/scenic/' + i + '.jpg')" :alt="i" :title="i" 
-          style="width: 100%; height: 100%"/>
+        <el-image
+          :src="require('../assets/scenic/' + i + '.jpg')"
+          :alt="i"
+          :title="i"
+          style="width: 100%; height: 100%"
+        />
       </el-carousel-item>
     </el-carousel>
+    <p>测试文字</p>
+    <p>测试文字</p>
+    <p>测试文字</p>
+    <p>测试文字</p>
+  </div>
 </template>
 <script>
 export default {
@@ -27,3 +41,10 @@ export default {
   }
 };
 </script>
+<style scoped>
+p {
+  text-align: center;
+  margin-top: 400px;
+  margin-bottom: 400px;
+}
+</style>
