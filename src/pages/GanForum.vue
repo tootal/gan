@@ -2,8 +2,12 @@
   <div>
     <el-table :data="tableData" class="forum-table">
       <el-table-column type="index"></el-table-column>
-      <el-table-column prop="topic" label="主题"></el-table-column>
-      <el-table-column prop="author" label="作者" width="180"></el-table-column>
+      <el-table-column prop="topic" label="主题" v-slot="{ row }">
+        <router-link :to="'/forum/' + row.index" class="topic-link">{{ row.topic }}</router-link>
+      </el-table-column>
+      <el-table-column prop="author" label="作者" width="180" v-slot="{ row }">
+        <router-link :to="'/user/' + row.author" class="topic-link">{{ row.author }}</router-link>
+      </el-table-column>
       <el-table-column prop="reply" label="回复" width="180" sortable></el-table-column>
     </el-table>
   </div>
@@ -21,6 +25,7 @@ export default {
       let d = [];
       for (let i = 0; i < 3 + Math.floor(60 * Math.random()); i++) {
         let o = {};
+        o.index = i + 1;
         o.statement = StatementGenerator();
         o.topic = QuestionGenerator(o.statement);
         o.author = ChineseNameGenerator();
@@ -36,5 +41,12 @@ export default {
 .forum-table {
   max-width: 1024px;
   margin: 20px auto;
+}
+.el-table__row:hover {
+  cursor: pointer;
+}
+.topic-link {
+  text-decoration: none;
+  color: black;
 }
 </style>
