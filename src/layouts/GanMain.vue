@@ -2,7 +2,7 @@
   <div>
     <el-container>
       <el-header height="50px"></el-header>
-      <el-main class="border border-primary"></el-main>
+      <el-main class="border border-primary" style="padding-bottom: 500px"></el-main>
       <el-footer height="90px">
         <gan-foot></gan-foot>
       </el-footer>
