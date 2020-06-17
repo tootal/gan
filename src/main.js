@@ -4,8 +4,9 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import App from './App.vue'
 import './styles/gan.scss'
-import GanIndex from './pages/GanIndex.vue'
-import GanForum from './pages/GanForum.vue'
+
+const GanIndex = () => import('./pages/GanIndex.vue')
+const GanForum = () => import('./pages/GanForum.vue')
 
 Vue.use(VueRouter)
 Vue.use(ElementUI)
