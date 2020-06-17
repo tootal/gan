@@ -3,7 +3,7 @@ html {
   -ms-overflow-style: scrollbar;
 }
 
-body {
+body{
   margin: 0;
 }
 
@@ -22,4 +22,8 @@ body {
 
 .text-center {
   text-align: center;
+}
+
+.h-100 {
+  height: 100%;
 }
