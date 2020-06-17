@@ -1,15 +1,15 @@
 <template>
   <div id="app">
-    <gan-main></gan-main>
+    <gan-layout></gan-layout>
   </div>
 </template>
 
 <script>
-import GanMain from './layouts/GanMain.vue'
+import GanLayout from './layouts/GanLayout.vue'
 export default {
   name: 'App',
   components: {
-    GanMain,
+    GanLayout,
   }
 }
 </script>
