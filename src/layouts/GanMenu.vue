@@ -32,7 +32,6 @@ export default {
   },
   computed: {
     activeIndex() {
-      console.log(this.$route.name);
       return this.$route.name == '/' ? 'index' : this.$route.name;
     }
   }

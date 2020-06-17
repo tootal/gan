@@ -7,6 +7,7 @@ import './styles/gan.scss'
 
 const GanIndex = () => import('./pages/GanIndex.vue')
 const GanForum = () => import('./pages/GanForum.vue')
+const GanLocation = () => import('./pages/GanLocation.vue')
 
 Vue.use(VueRouter)
 Vue.use(ElementUI)
@@ -25,6 +26,11 @@ const router = new VueRouter({
       path: '/forum',
       component: GanForum,
       name: 'forum'
+    },
+    {
+      path: '/location',
+      component: GanLocation,
+      name: 'location'
     }
   ]
 })
