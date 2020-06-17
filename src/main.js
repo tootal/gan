@@ -12,6 +12,7 @@ Vue.use(ElementUI)
 Vue.config.productionTip = false
 
 const router = new VueRouter({
+  mode: process.env.VUE_APP_ROUTER_MODE || 'history',
   routes: [
     {
       path: '/index',
