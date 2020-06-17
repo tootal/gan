@@ -6,7 +6,11 @@
         <div>GAN.TOOTAL.XYZ</div>
       </el-col>
     </el-row>
-    <el-menu mode="horizontal" class="d-flex justify-content-center hidden-xs-only">
+    <el-menu
+      mode="horizontal"
+      default-active="index"
+      class="d-flex justify-content-center hidden-xs-only"
+    >
       <el-menu-item v-for="(value, name) in this.$root.menus" :index="name" :key="name">{{ value }}</el-menu-item>
     </el-menu>
     <slot></slot>
