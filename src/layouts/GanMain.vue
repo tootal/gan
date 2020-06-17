@@ -7,30 +7,14 @@
       </el-col>
     </el-row>
     <el-menu mode="horizontal" class="d-flex justify-content-center hidden-xs-only">
-      <el-menu-item v-for="(value, name) in menus" :index="name" :key="name">
-        {{ value }}
-      </el-menu-item>
+      <el-menu-item v-for="(value, name) in this.$root.menus" :index="name" :key="name">{{ value }}</el-menu-item>
     </el-menu>
     <slot></slot>
   </div>
 </template>
 <script>
 export default {
-  name: "GanMain",
-  data() {
-    return {
-      menus: {
-        index: "首页",
-        forum: "论坛",
-        location: "位置",
-        economy: "经济",
-        education: "教育",
-        culture: "文化",
-        history: "历史",
-        about: "关于"
-      }
-    };
-  }
+  name: "GanMain"
 };
 </script>
 <style scoped>
