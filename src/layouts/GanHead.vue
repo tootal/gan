@@ -1,7 +1,9 @@
 <template>
   <el-row type="flex" align="middle" class="h-100">
     <el-col :span="2" :sm="4" :xs="4" class="h-100">
-      <el-image :src="require('../assets/danboard.png')" alt="Danboard" fit="contain" class="h-100 on-main-menu"></el-image>
+      <router-link to="/">
+      <img :src="require('../assets/danboard.png')" alt="Danboard" class="h-100 fit-contain"/>
+      </router-link>
     </el-col>
     <el-col :span="18" :sm="17" :xs="16">
       <div></div>
