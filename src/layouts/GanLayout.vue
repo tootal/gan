@@ -1,28 +1,28 @@
 <template>
-  <div>
-    <el-container>
-      <el-header height="50px">
-        <gan-head></gan-head>
-      </el-header>
-      <el-main class="border border-primary" style="padding-bottom: 500px">
-        <gan-main></gan-main>
-      </el-main>
-      <el-footer height="90px">
-        <gan-foot></gan-foot>
-      </el-footer>
-    </el-container>
-  </div>
+  <el-container>
+    <el-header height="50px">
+      <gan-head></gan-head>
+    </el-header>
+    <el-main class="border border-primary" style="padding-bottom: 500px">
+      <gan-main>
+        <slot></slot>
+      </gan-main>
+    </el-main>
+    <el-footer height="90px">
+      <gan-foot></gan-foot>
+    </el-footer>
+  </el-container>
 </template>
 <script>
-import GanHead from './GanHead.vue'
-import GanMain from './GanMain.vue'
-import GanFoot from './GanFoot.vue'
+import GanHead from "./GanHead.vue";
+import GanMain from "./GanMain.vue";
+import GanFoot from "./GanFoot.vue";
 export default {
-  name: 'GanLayout',
+  name: "GanLayout",
   components: {
     GanHead,
     GanMain,
-    GanFoot,
+    GanFoot
   }
-}
+};
 </script>
