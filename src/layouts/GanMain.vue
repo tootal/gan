@@ -7,25 +7,34 @@
       </el-col>
     </el-row>
     <el-menu mode="horizontal" class="d-flex justify-content-center hidden-xs-only">
-      <el-menu-item index="index">首页</el-menu-item>
-      <el-menu-item index="forum">论坛</el-menu-item>
-      <el-menu-item index="location">位置</el-menu-item>
-      <el-menu-item index="economy">经济</el-menu-item>
-      <el-menu-item index="education">教育</el-menu-item>
-      <el-menu-item index="culture">文化</el-menu-item>
-      <el-menu-item index="history">历史</el-menu-item>
-      <el-menu-item index="about">关于</el-menu-item>
+      <el-menu-item v-for="(value, name) in menus" :index="name" :key="name">
+        {{ value }}
+      </el-menu-item>
     </el-menu>
     <slot></slot>
   </div>
 </template>
 <script>
 export default {
-  name: "GanMain"
+  name: "GanMain",
+  data() {
+    return {
+      menus: {
+        index: "首页",
+        forum: "论坛",
+        location: "位置",
+        economy: "经济",
+        education: "教育",
+        culture: "文化",
+        history: "历史",
+        about: "关于"
+      }
+    };
+  }
 };
 </script>
 <style scoped>
-@import '~element-ui/lib/theme-chalk/display.css';
+@import "~element-ui/lib/theme-chalk/display.css";
 .el-menu-item {
   float: none;
 }
