@@ -14,9 +14,10 @@ Vue.config.productionTip = false
 const router = new VueRouter({
   routes: [
     {
-      path: '/',
+      path: '/index',
       component: GanIndex,
-      name: 'index'
+      name: 'index',
+      alias: '/'
     },
     {
       path: '/forum',

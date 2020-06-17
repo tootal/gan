@@ -3,7 +3,7 @@
     <el-header height="50px">
       <gan-head></gan-head>
     </el-header>
-    <el-main class="border border-primary" style="padding-bottom: 500px">
+    <el-main style="padding-bottom: 500px">
       <gan-main>
         <slot></slot>
       </gan-main>

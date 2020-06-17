@@ -9,6 +9,7 @@
     <el-menu
       mode="horizontal"
       default-active="index"
+      router="true"
       class="d-flex justify-content-center hidden-xs-only"
     >
       <el-menu-item v-for="(value, name) in this.$root.menus" :index="name" :key="name">{{ value }}</el-menu-item>

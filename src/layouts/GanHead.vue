@@ -15,7 +15,7 @@
     <el-col :xs="4" class="hidden-sm-and-up">
       <el-button icon="el-icon-menu" class="menu-button" @click="drawer = true"></el-button>
       <el-drawer title="菜单" :visible.sync="drawer" :with-header="false" size="60%">
-        <el-menu default-active="index">
+        <el-menu default-active="index" router="true">
           <el-menu-item
             v-for="(value, name) in this.$root.menus"
             :index="name"
