@@ -1,15 +1,19 @@
 <template>
   <div>
-      <el-table :data="tableData" class="forum-table">
-    <el-table-column prop="topic" label="主题"></el-table-column>
-    <el-table-column prop="author" label="作者" width="180"></el-table-column>
-    <el-table-column prop="reply" label="回复" width="180"></el-table-column>
-  </el-table>
+    <el-table :data="tableData" class="forum-table">
+      <el-table-column type="index"></el-table-column>
+      <el-table-column prop="topic" label="主题"></el-table-column>
+      <el-table-column prop="author" label="作者" width="180"></el-table-column>
+      <el-table-column prop="reply" label="回复" width="180" sortable></el-table-column>
+    </el-table>
   </div>
 </template>
 <script>
-import {StatementGenerator, QuestionGenerator} from '../utils/QuestionGenerator.js';
-import {ChineseNameGenerator} from '../utils/ChineseNameGenerator.js';
+import {
+  StatementGenerator,
+  QuestionGenerator
+} from "../utils/QuestionGenerator.js";
+import { ChineseNameGenerator } from "../utils/ChineseNameGenerator.js";
 export default {
   name: "GanForum",
   computed: {
