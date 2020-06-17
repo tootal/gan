@@ -26,3 +26,8 @@ export default {
   }
 };
 </script>
+<style scoped>
+.el-header {
+  padding: 0;
+}
+</style>

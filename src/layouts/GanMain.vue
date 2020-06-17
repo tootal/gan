@@ -6,7 +6,7 @@
         <div>GAN.TOOTAL.XYZ</div>
       </el-col>
     </el-row>
-    <el-menu mode="horizontal" class="d-flex justify-content-center">
+    <el-menu mode="horizontal" class="d-flex justify-content-center hidden-xs-only">
       <el-menu-item index="index">首页</el-menu-item>
       <el-menu-item index="forum">论坛</el-menu-item>
       <el-menu-item index="location">位置</el-menu-item>
@@ -25,7 +25,8 @@ export default {
 };
 </script>
 <style scoped>
-.el-menu--horizontal>.el-menu-item {
+@import '~element-ui/lib/theme-chalk/display.css';
+.el-menu-item {
   float: none;
 }
 </style>
