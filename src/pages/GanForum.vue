@@ -34,6 +34,9 @@ export default {
       }
       return d;
     }
+  },
+  mounted() {
+    this.$root.forumData = this.tableData;
   }
 };
 </script>

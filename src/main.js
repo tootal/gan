@@ -10,6 +10,7 @@ const GanIndex = () => import('./pages/GanIndex.vue')
 const GanForum = () => import('./pages/GanForum.vue')
 const GanLocation = () => import('./pages/GanLocation.vue')
 const GanError = () => import('./pages/GanError.vue')
+const GanPost = () => import('./pages/GanPost.vue')
 
 Vue.use(VueRouter)
 Vue.use(BaiduMap, {
@@ -31,6 +32,11 @@ const router = new VueRouter({
       path: '/forum',
       component: GanForum,
       name: 'forum'
+    },
+    {
+      path: '/forum/:id',
+      component: GanPost,
+      name: 'post',
     },
     {
       path: '/location',
@@ -57,7 +63,8 @@ new Vue({
       culture: "文化",
       history: "历史",
       about: "关于"
-    }
+    },
+    forumData: []
   },
   render: h => h(App),
 })
