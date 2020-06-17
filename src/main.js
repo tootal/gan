@@ -9,6 +9,7 @@ import './styles/gan.scss'
 const GanIndex = () => import('./pages/GanIndex.vue')
 const GanForum = () => import('./pages/GanForum.vue')
 const GanLocation = () => import('./pages/GanLocation.vue')
+const GanError = () => import('./pages/GanError.vue')
 
 Vue.use(VueRouter)
 Vue.use(BaiduMap, {
@@ -35,6 +36,11 @@ const router = new VueRouter({
       path: '/location',
       component: GanLocation,
       name: 'location'
+    },
+    {
+      path: '*',
+      component: GanError,
+      name: 'error'
     }
   ]
 })
