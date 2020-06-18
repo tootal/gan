@@ -21,7 +21,7 @@
     <div class="head-menu hidden-md-and-up">
       <el-button icon="el-icon-menu" class="menu-button" @click="drawer = true"></el-button>
     </div>
-    <el-drawer title="菜单" :visible.sync="drawer" :with-header="false" size="60%" ref="drawermenu">
+    <el-drawer title="菜单" :visible.sync="drawer" :with-header="false" ref="drawermenu">
       <gan-menu :main="false" @menu-changed="handleMenuChanged"></gan-menu>
     </el-drawer>
   </div>
@@ -87,5 +87,4 @@ export default {
 .head-logo, .head-button, .head-menu {
   z-index: 11;
 }
-
 </style>
