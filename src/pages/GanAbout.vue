@@ -3,7 +3,16 @@
     <vue-markdown>{{ readme }}</vue-markdown>
     <el-divider>以上内容来自README</el-divider>
     <h2>开发记录</h2>
-    <p v-for="i in devlogs" :key="i">{{ i }}</p>
+    <el-timeline>
+      <el-timeline-item
+        v-for="(log, index) in devlogs"
+        :key="index"
+        :timestamp="log.time"
+        :color="log.color"
+        size="large"
+      ><span class="abbr-commit">{{log.abbrCommit}}</span>{{log.message}}
+      </el-timeline-item>
+    </el-timeline>
     <h2>开发者工具</h2>
     <el-button @click="showCache">查看本地缓存数据</el-button>
     <el-button @click="showForumCache">查看论坛缓存数据</el-button>
@@ -15,17 +24,29 @@
 import GanContent from "../layouts/GanContent.vue";
 import readme from "../../README.md";
 import VueMarkdown from "vue-markdown";
-import gitlog from '../../scripts/gitlog.txt';
+import gitlog from "../../scripts/gitlog.txt";
 export default {
   name: "GanAbout",
   data() {
     return {
-      readme: readme,
+      readme: readme
     };
   },
   computed: {
     devlogs() {
-      return gitlog.split('\n');
+      let logs = [];
+      for (let i of gitlog.split("\n")) {
+        if (i === "") continue;
+        let t = i.split(" ");
+        let c = {};
+        c.commit = t[0];
+        c.abbrCommit = t[0].slice(0, 7);
+        c.time = t[1];
+        c.message = t[2];
+        logs.push(c);
+      }
+      logs[0].color = "#0bbd87";
+      return logs;
     }
   },
   methods: {
@@ -64,3 +85,9 @@ export default {
   }
 };
 </script>
+<style scoped>
+.abbr-commit {
+  color: red;
+  margin-right: 5px;
+}
+</style>
