@@ -4,7 +4,7 @@
     :class="main ? mainClass : ''"
     :router="true">
     <el-menu-item v-for="(value, name) in this.$root.menus" 
-      :index="name" :key="name">{{ value }}</el-menu-item>
+      :index="'/' + name" :key="name">{{ value }}</el-menu-item>
     <div v-if="!main">
       <el-divider></el-divider>
       <el-menu-item index="login">登录</el-menu-item>
