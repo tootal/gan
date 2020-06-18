@@ -1,7 +1,6 @@
 <template>
   <gan-content>
     <vue-markdown>{{ readme }}</vue-markdown>
-    <el-divider>以上内容来自README</el-divider>
     <h2>开发记录</h2>
     <el-timeline>
       <el-timeline-item
