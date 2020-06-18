@@ -1,14 +1,14 @@
 <template>
   <div>
     <el-table :data="tableData" class="forum-table">
-      <el-table-column type="index"></el-table-column>
-      <el-table-column prop="topic" label="主题" v-slot="{ row }">
+      <el-table-column type="index" min-width="5px"></el-table-column>
+      <el-table-column prop="topic" label="主题" min-width="160px" v-slot="{ row }">
         <router-link :to="'/forum/' + row.index" class="topic-link">{{ row.topic }}</router-link>
       </el-table-column>
-      <el-table-column prop="author" label="作者" width="180" v-slot="{ row }">
+      <el-table-column prop="author" label="作者" min-width="60px" v-slot="{ row }">
         <router-link :to="'/user/' + row.author" class="topic-link">{{ row.author }}</router-link>
       </el-table-column>
-      <el-table-column prop="reply" label="回复" width="180" sortable></el-table-column>
+      <el-table-column prop="reply" label="回复" min-width="60px" sortable></el-table-column>
     </el-table>
   </div>
 </template>
