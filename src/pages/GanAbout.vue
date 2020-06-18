@@ -1,6 +1,7 @@
 <template>
   <gan-content>
-    <p>{{ readme }}</p>
+    <vue-markdown>{{ readme }}</vue-markdown>
+    <el-divider>以上内容来自README</el-divider>
     <h2>开发者工具</h2>
     <el-button @click="showCache">查看本地缓存数据</el-button>
     <el-button type="danger" plain @click="clearForumCache">清除论坛缓存</el-button>
@@ -9,13 +10,14 @@
 </template>
 <script>
 import GanContent from "../layouts/GanContent.vue";
-import readme from '../../README.md'
+import readme from "../../README.md";
+import VueMarkdown from "vue-markdown";
 export default {
   name: "GanAbout",
   data() {
     return {
       readme: readme
-    }
+    };
   },
   methods: {
     showCache() {
@@ -41,7 +43,8 @@ export default {
     }
   },
   components: {
-    GanContent
+    GanContent,
+    VueMarkdown
   }
 };
 </script>
