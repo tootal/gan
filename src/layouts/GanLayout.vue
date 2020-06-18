@@ -31,6 +31,7 @@ export default {
 }
 .el-main {
   margin-top: 50px;
+  margin-bottom: 0;
   overflow: visible;
 }
 </style>
