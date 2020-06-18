@@ -6,6 +6,7 @@
           :src="require('../assets/scenic/' + i + '.jpg')"
           :alt="i"
           :title="i"
+          lazy
           style="width: 100%; height: 100%"
         />
       </el-carousel-item>
