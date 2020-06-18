@@ -8,11 +8,7 @@
         <el-input v-model="form.author"></el-input>
       </el-form-item>
       <el-form-item label="内容">
-        <el-input
-          type="textarea"
-          :autosize="{ minRows: 8 }"
-          v-model="form.content"
-        ></el-input>
+        <el-input type="textarea" :autosize="{ minRows: 8 }" v-model="form.content"></el-input>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="handlePost">发表帖子</el-button>
@@ -45,7 +41,11 @@ export default {
       form.index = data.length + 1;
       data.push(form);
       localStorage.setItem("forumData", JSON.stringify(data));
-      this.$router.push('/forum');
+      this.$message({
+        message: "发帖成功。",
+        type: "success"
+      });
+      this.$router.push("/forum");
     }
   },
   components: {
