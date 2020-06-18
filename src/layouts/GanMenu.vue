@@ -33,7 +33,11 @@ export default {
   },
   computed: {
     activeIndex() {
-      return this.$route.path == '/' ? '/index' : this.$route.path;
+      if (this.$route.path.startsWith('/forum/')) {
+        return '/forum';
+      } else {
+        return this.$route.path == '/' ? '/index' : this.$route.path;
+      }
     }
   }
 };
