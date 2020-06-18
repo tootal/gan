@@ -1,5 +1,5 @@
 <template>
-  <div class="content">
+  <div class="content" :style="contentStyle">
     <el-card class="content-card" :body-style="cardBodyStyle">
       <slot></slot>
     </el-card>
@@ -15,6 +15,12 @@ export default {
         return {
           padding: "20px"
         };
+      }
+    },
+    contentStyle: {
+      type: Object,
+      default() {
+        return {};
       }
     }
   }
