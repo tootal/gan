@@ -13,7 +13,7 @@
     </div>
     <div class="head-button hidden-sm-and-down">
       <el-button-group>
-        <el-button @click="handlePostClick" v-if="$route.path == '/forum'">发帖</el-button>
+        <el-button @click="handlePostClick" v-if="$route.path.startsWith('/forum') || $route.path === '/post'">发帖</el-button>
         <el-button @click="handleLoginClick">登录</el-button>
         <el-button type="primary" plain @click="handleRegisterClick">注册</el-button>
       </el-button-group>

@@ -15,7 +15,7 @@
         ></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="onSubmit">发表帖子</el-button>
+        <el-button type="primary" @click="handlePost">发表帖子</el-button>
         <el-button>取消</el-button>
       </el-form-item>
     </el-form>
@@ -35,8 +35,8 @@ export default {
     };
   },
   methods: {
-    onSubmit() {
-      console.log("submit!");
+    handlePost() {
+      console.log("post submit!");
     }
   },
   components: {

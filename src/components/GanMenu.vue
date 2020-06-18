@@ -1,15 +1,22 @@
 <template>
-  <el-menu :default-active="activeIndex" 
-    :mode="main ? 'horizontal' : 'vertical'" 
+  <el-menu
+    :default-active="activeIndex"
+    :mode="main ? 'horizontal' : 'vertical'"
     :class="main ? mainClass : ''"
-    :router="true">
-    <el-menu-item v-for="(value, name) in this.$root.menus" 
-      :index="'/' + name" :key="name" @click="$emit('menu-changed')">{{ value }}</el-menu-item>
-    <div v-if="!main">
+    :router="true"
+  >
+    <el-menu-item
+      v-for="(value, name) in this.$root.menus"
+      :index="'/' + name"
+      :key="name"
+      @click="$emit('menu-changed')"
+    >{{ value }}</el-menu-item>
+    <div v-if="main"></div>
+    <div v-else>
       <el-divider></el-divider>
-      <el-menu-item index="post" v-if="$route.path == '/forum'" @click="$emit('menu-changed')">发帖</el-menu-item>
-      <el-menu-item index="login" @click="$emit('menu-changed')">登录</el-menu-item>
-      <el-menu-item index="register" @click="$emit('menu-changed')">注册</el-menu-item>
+      <el-menu-item index="/post" v-if="isShowPost" @click="$emit('menu-changed')">发帖</el-menu-item>
+      <el-menu-item index="/login" @click="$emit('menu-changed')">登录</el-menu-item>
+      <el-menu-item index="/register" @click="$emit('menu-changed')">注册</el-menu-item>
     </div>
   </el-menu>
 </template>
@@ -24,20 +31,16 @@ export default {
   },
   data() {
     return {
-      mainClass: [
-        'd-flex',
-        'justify-content-center',
-        'hidden-sm-and-down'
-      ],
-    }
+      mainClass: ["d-flex", "justify-content-center", "hidden-sm-and-down"]
+    };
   },
   computed: {
     activeIndex() {
-      if (this.$route.path.startsWith('/forum/')) {
-        return '/forum';
-      } else {
-        return this.$route.path == '/' ? '/index' : this.$route.path;
-      }
+      let p = this.$route.path;
+      return "/" + (p === "/" ? "index" : p.split("/").filter(s => s)[0]);
+    },
+    isShowPost() {
+      return ["/forum", "/post"].includes(this.activeIndex);
     }
   }
 };
