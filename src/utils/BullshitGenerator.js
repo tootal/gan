@@ -157,7 +157,8 @@ let 下取整 = Math.floor;
 let 同余乘数 = 214013;
 let 同余加数 = 2531011;
 let 同余模 = Math.pow(2, 32);
-let 随机种子 = 下取整(随便取一个数(0, 同余模, Math.random));
+// let 随机种子 = 下取整(随便取一个数(0, 同余模, Math.random));
+let 随机种子;
 
 // LCG https://en.wikipedia.org/wiki/Linear_congruential_generator
 function 同余发生器() {
@@ -195,7 +196,20 @@ function 增加段落(段落) {
   return '　　' + 段落 + '。 '
 }
 
+function 字符串哈希值(str,caseSensitive){
+  if(!caseSensitive){
+      str = str.toLowerCase();
+  }
+  var hash  =   1315423911,i,ch;
+  for (i = str.length - 1; i >= 0; i--) {
+      ch = str.charCodeAt(i);
+      hash ^= ((hash << 5) + ch + (hash >> 2));
+  }
+  return  (hash & 0x7FFFFFFF);
+}
+
 function 生成文章(主题, 最大字数 = 12000) {
+  随机种子 = 字符串哈希值(主题);
   let 文章 = []
   let 段落 = '';
   let 文章长度 = 0;
