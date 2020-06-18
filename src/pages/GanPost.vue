@@ -1,7 +1,9 @@
 <template>
-  <div>
-    <h3 class="title">{{ post.topic }}</h3>
-    <p class="article" v-for="(o, i) in article" :key="i"> {{ o }} </p>
+  <div class="detail">
+    <el-card class="detail-card">
+      <h3 class="title">{{ post.topic }}</h3>
+      <p class="article" v-for="(o, i) in article" :key="i">{{ o }}</p>
+    </el-card>
   </div>
 </template>
 <script>
@@ -19,6 +21,15 @@ export default {
 };
 </script>
 <style scoped>
+.detail {
+  background-color: #f6f6f6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.detail-card {
+  max-width: 1024px;
+  margin: 0 auto;
+}
 .title {
   color: #1a1a1a;
   text-align: center;
