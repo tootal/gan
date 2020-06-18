@@ -28,6 +28,7 @@ export default {
   width: 100%;
   background-color: white;
   z-index: 9;
+  box-shadow: 0 0 5px #888;
 }
 .head-logo {
   position: fixed;
