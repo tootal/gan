@@ -4,6 +4,7 @@ import GanLocation from './pages/GanLocation.vue'
 import GanError from './pages/GanError.vue'
 import GanDetail from './pages/GanDetail.vue'
 import GanPost from './pages/GanPost.vue'
+import GanAbout from './pages/GanAbout'
 
 let routes = [
   {
@@ -37,6 +38,11 @@ let routes = [
     path: '/location',
     component: GanLocation,
     name: 'location'
+  },
+  {
+    path: '/about',
+    component: GanAbout,
+    name: 'about'
   },
   {
     path: '*',
