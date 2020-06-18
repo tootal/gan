@@ -11,7 +11,6 @@
         <el-input
           type="textarea"
           :autosize="{ minRows: 8 }"
-          placeholder="请输入内容"
           v-model="form.content"
         ></el-input>
       </el-form-item>
