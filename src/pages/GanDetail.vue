@@ -12,10 +12,20 @@ export default {
   name: "GanDetail",
   computed: {
     post() {
-      return this.$root.forumData[this.$route.params.id - 1];
+      if (localStorage["forumData"]) {
+        let data = JSON.parse(localStorage["forumData"]);
+        let id = this.$route.params.id;
+        if (data && id >= 0 && data.length >= id) {
+          return data[id - 1];
+        }
+      }
+      return { topic: "未找到该帖子" };
     },
     article() {
-      return BullshitGenerator(this.post.statement);
+      if (this.post.statement) {
+        return BullshitGenerator(this.post.statement);
+      }
+      return [];
     }
   }
 };

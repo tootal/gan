@@ -41,7 +41,6 @@ export default {
     }
   },
   mounted() {
-    this.$root.forumData = this.tableData;
     localStorage.setItem("forumData", JSON.stringify(this.tableData));
   }
 };
