@@ -13,8 +13,8 @@
     </div>
     <div class="head-button hidden-sm-and-down">
       <el-button-group>
-        <el-button>登录</el-button>
-        <el-button type="primary" plain>注册</el-button>
+        <el-button @click="handleLoginClick">登录</el-button>
+        <el-button type="primary" plain @click="handleRegisterClick">注册</el-button>
       </el-button-group>
     </div>
     <div class="head-menu hidden-md-and-up">
@@ -33,6 +33,14 @@ export default {
     return {
       drawer: false
     };
+  },
+  methods: {
+    handleLoginClick() {
+      this.$router.push('/login');
+    },
+    handleRegisterClick() {
+      this.$router.push('/register');
+    }
   },
   components: {
     GanMenu
