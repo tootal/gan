@@ -36,7 +36,16 @@ export default {
   },
   methods: {
     handlePost() {
-      console.log("post submit!");
+      let data = [];
+      let form = this.form;
+      if (localStorage["forumData"]) {
+        data = JSON.parse(localStorage["forumData"]);
+      }
+      form.reply = 0;
+      form.index = data.length + 1;
+      data.push(form);
+      localStorage.setItem("forumData", JSON.stringify(data));
+      this.$router.push('/forum');
     }
   },
   components: {

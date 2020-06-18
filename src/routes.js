@@ -15,7 +15,10 @@ let routes = [
   {
     path: '/forum',
     component: GanForum,
-    name: 'forum'
+    name: 'forum',
+    meta: {
+      keepAlive: false
+    }
   },
   {
     path: '/forum/:id',

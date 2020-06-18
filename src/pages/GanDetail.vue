@@ -2,7 +2,7 @@
   <gan-content>
     <h3 class="title">{{ post.topic }}</h3>
     <p class="article" v-for="(o, i) in article" :key="i">{{ o }}</p>
-    <el-alert title="此文章内容根据随机算法自动生成，不代表本站赞成文章的内容或立场。" 
+    <el-alert v-if="!post.content" title="此文章内容根据随机算法自动生成，不代表本站赞成文章的内容或立场。" 
       type="warning" show-icon :closable="false"></el-alert>
   </gan-content>
 </template>
@@ -23,6 +23,9 @@ export default {
       return { topic: "未找到该帖子" };
     },
     article() {
+      if (this.post.content) {
+        return [this.post.content];
+      }
       if (this.post.statement) {
         return BullshitGenerator(this.post.statement);
       }
