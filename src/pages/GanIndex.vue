@@ -30,9 +30,6 @@ export default {
       pics: ["七里窑", "东河浮桥", "八境台", "翠微峰", "赣州中央公园", "郁孤台"]
     };
   },
-  mounted() {
-    console.log(document.body.clientWidth);
-  },
   computed: {
     autoHeight() {
       if (this.width <= 1024) return this.width / 4 + "px";
@@ -44,7 +41,6 @@ export default {
 <style scoped>
 p {
   text-align: center;
-  margin-top: 400px;
-  margin-bottom: 400px;
+  padding: 400px 0;
 }
 </style>

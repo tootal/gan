@@ -49,6 +49,9 @@ export default {
   max-width: 1024px;
   margin: 20px auto;
 }
+.el-table {
+  margin-top: 0;
+}
 .el-table__row:hover {
   cursor: pointer;
 }

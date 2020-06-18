@@ -22,6 +22,8 @@ export default {
 .title {
   color: #1a1a1a;
   text-align: center;
+  margin: 0;
+  padding: 20px 0;
 }
 .article {
   max-width: 1024px;
