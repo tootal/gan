@@ -12,9 +12,9 @@
   </el-container>
 </template>
 <script>
-import GanHead from "./GanHead.vue";
-import GanMain from "./GanMain.vue";
-import GanFoot from "./GanFoot.vue";
+import GanHead from "../components/GanHead.vue";
+import GanMain from "../layouts/GanMain.vue";
+import GanFoot from "../components/GanFoot.vue";
 export default {
   name: "GanLayout",
   components: {

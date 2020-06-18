@@ -27,7 +27,7 @@
   </div>
 </template>
 <script>
-import GanMenu from "../layouts/GanMenu.vue";
+import GanMenu from "./GanMenu.vue";
 export default {
   name: "GanHead",
   data() {

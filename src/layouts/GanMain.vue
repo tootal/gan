@@ -13,7 +13,7 @@
   </div>
 </template>
 <script>
-import GanMenu from "./GanMenu.vue";
+import GanMenu from "../components/GanMenu.vue";
 export default {
   name: "GanMain",
   components: {

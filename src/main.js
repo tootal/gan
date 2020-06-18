@@ -5,8 +5,7 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import App from './App.vue'
 import './styles/gan.scss'
-
-import routes from './routes'
+import routes from './routes.js'
 
 Vue.use(VueRouter)
 Vue.use(BaiduMap, {
