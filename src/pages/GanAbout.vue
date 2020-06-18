@@ -2,6 +2,8 @@
   <gan-content>
     <vue-markdown>{{ readme }}</vue-markdown>
     <el-divider>以上内容来自README</el-divider>
+    <h2>开发记录</h2>
+    <p v-for="i in devlogs" :key="i">{{ i }}</p>
     <h2>开发者工具</h2>
     <el-button @click="showCache">查看本地缓存数据</el-button>
     <el-button @click="showForumCache">查看论坛缓存数据</el-button>
@@ -13,12 +15,18 @@
 import GanContent from "../layouts/GanContent.vue";
 import readme from "../../README.md";
 import VueMarkdown from "vue-markdown";
+import gitlog from '../../scripts/gitlog.txt';
 export default {
   name: "GanAbout",
   data() {
     return {
-      readme: readme
+      readme: readme,
     };
+  },
+  computed: {
+    devlogs() {
+      return gitlog.split('\n');
+    }
   },
   methods: {
     showCache() {

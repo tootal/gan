@@ -16,7 +16,7 @@ module.exports = {
     // Text Loader
     config.module
       .rule('text')
-      .test(/\.md$/)
+      .test(/\.(md|txt)$/)
       .use('text-loader')
       .loader('text-loader')
       .end()
