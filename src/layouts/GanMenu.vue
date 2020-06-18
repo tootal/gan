@@ -7,6 +7,7 @@
       :index="'/' + name" :key="name" @click="$emit('menu-changed')">{{ value }}</el-menu-item>
     <div v-if="!main">
       <el-divider></el-divider>
+      <el-menu-item index="post" v-if="$route.path == '/forum'">发帖</el-menu-item>
       <el-menu-item index="login">登录</el-menu-item>
       <el-menu-item index="register">注册</el-menu-item>
     </div>
