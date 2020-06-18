@@ -6,7 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "build:file": "vue-cli-service build --mode file",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "deploy": "scripts\\deploy.bat"
   },
   "dependencies": {
     "core-js": "^3.6.5",
