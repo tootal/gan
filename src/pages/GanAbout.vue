@@ -1,12 +1,38 @@
 <template>
   <gan-content>
-    <p class="text-center">关于页面</p>
+    <h2>开发者工具</h2>
+    <el-button @click="showCache">查看本地缓存数据</el-button>
+    <el-button type="danger" plain @click="clearForumCache">清除论坛缓存</el-button>
+    <el-button type="danger" plain @click="clearCache">清除所有缓存</el-button>
   </gan-content>
 </template>
 <script>
 import GanContent from "../layouts/GanContent.vue";
 export default {
   name: "GanAbout",
+  methods: {
+    showCache() {
+      console.log(window.localStorage);
+      this.$message({
+        message: "请打开控制台查看数据！",
+        type: "info"
+      });
+    },
+    clearForumCache() {
+      window.localStorage.removeItem("forumData");
+      this.$message({
+        message: "清除论坛缓存成功。",
+        type: "success"
+      });
+    },
+    clearCache() {
+      window.localStorage.clear();
+      this.$message({
+        message: "清除所有缓存成功。",
+        type: "success"
+      });
+    }
+  },
   components: {
     GanContent
   }
