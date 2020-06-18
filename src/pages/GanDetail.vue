@@ -3,6 +3,8 @@
     <el-card class="detail-card">
       <h3 class="title">{{ post.topic }}</h3>
       <p class="article" v-for="(o, i) in article" :key="i">{{ o }}</p>
+      <el-alert title="此文章内容根据随机算法自动生成，不代表本站赞成文章的内容或立场。" 
+        type="warning" show-icon :closable="false"></el-alert>
     </el-card>
   </div>
 </template>
@@ -50,7 +52,7 @@ export default {
   max-width: 1024px;
   margin: 10px auto;
   padding: 0px 10px;
-  line-height: 150%;
+  line-height: 180%;
   text-align: justify;
 }
 </style>
