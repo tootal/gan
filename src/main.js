@@ -6,11 +6,11 @@ import 'element-ui/lib/theme-chalk/index.css'
 import App from './App.vue'
 import './styles/gan.scss'
 
-const GanIndex = () => import('./pages/GanIndex.vue')
-const GanForum = () => import('./pages/GanForum.vue')
-const GanLocation = () => import('./pages/GanLocation.vue')
-const GanError = () => import('./pages/GanError.vue')
-const GanPost = () => import('./pages/GanPost.vue')
+import GanIndex from './pages/GanIndex.vue'
+import GanForum from './pages/GanForum.vue'
+import GanLocation from './pages/GanLocation.vue'
+import GanError from './pages/GanError.vue'
+import GanPost from './pages/GanPost.vue'
 
 Vue.use(VueRouter)
 Vue.use(BaiduMap, {
@@ -19,6 +19,10 @@ Vue.use(BaiduMap, {
 Vue.use(ElementUI)
 Vue.config.productionTip = false
 
+const originalPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err);
+}
 const router = new VueRouter({
   mode: process.env.VUE_APP_ROUTER_MODE || 'history',
   routes: [

@@ -32,7 +32,8 @@ export default {
   },
   computed: {
     activeIndex() {
-      return this.$route.name == '/' ? 'index' : this.$route.name;
+      // console.log(this.$route.path);
+      return this.$route.name == '/' ? '/index' : this.$route.path;
     }
   }
 };
