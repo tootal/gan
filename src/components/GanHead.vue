@@ -11,56 +11,16 @@
         />
       </router-link>
     </div>
-    <div class="head-button hidden-sm-and-down">
-      <el-button-group>
-        <el-button @click="handlePostClick" v-if="$route.path.startsWith('/forum') || $route.path === '/post'">发帖</el-button>
-        <el-button @click="handleLoginClick">登录</el-button>
-        <el-button type="primary" plain @click="handleRegisterClick">注册</el-button>
-      </el-button-group>
-    </div>
-    <div class="head-menu hidden-md-and-up">
-      <el-button icon="el-icon-menu" class="menu-button" @click="drawer = true"></el-button>
-    </div>
-    <el-drawer title="菜单" :visible.sync="drawer" :with-header="false" ref="drawermenu">
-      <gan-menu :main="false" @menu-changed="handleMenuChanged"></gan-menu>
-    </el-drawer>
   </div>
 </template>
 <script>
-import GanMenu from "./GanMenu.vue";
 export default {
-  name: "GanHead",
-  data() {
-    return {
-      drawer: false
-    };
-  },
-  methods: {
-    handleLoginClick() {
-      this.$router.push('/login');
-    },
-    handleRegisterClick() {
-      this.$router.push('/register');
-    },
-    handleMenuChanged() {
-      this.$refs.drawermenu.closeDrawer();
-    },
-    handlePostClick() {
-      this.$router.push('/post');
-    }
-  },
-  components: {
-    GanMenu
-  }
+  name: "GanHead"
 };
 </script>
 <style scoped>
 @import "~element-ui/lib/theme-chalk/display.css";
-.menu-button {
-  font-size: 18px;
-  padding-left: 12px;
-  padding-right: 12px;
-}
+
 .head-bg {
   position: fixed;
   top: 0;
@@ -73,18 +33,9 @@ export default {
   position: fixed;
   top: 0;
 }
-.head-button {
-  position: fixed;
-  top: 5px;
-  right: 10px;
-}
-.head-menu {
-  position: fixed;
-  top: 2px;
-  right: 10px;
-}
 
-.head-logo, .head-button, .head-menu {
+.head-logo,
+.head-button {
   z-index: 11;
 }
 </style>
