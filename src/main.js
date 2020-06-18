@@ -26,7 +26,6 @@ VueRouter.prototype.push = function push(location) {
 const router = new VueRouter({
   mode: process.env.VUE_APP_ROUTER_MODE || 'history',
   scrollBehavior (to, from, savedPosition) {
-    console.log(to, from, savedPosition);
     if (savedPosition) {
       return savedPosition;
     } else {

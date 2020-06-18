@@ -20,8 +20,8 @@
     <div class="head-menu hidden-md-and-up">
       <el-button icon="el-icon-menu" class="menu-button" @click="drawer = true"></el-button>
     </div>
-    <el-drawer title="菜单" :visible.sync="drawer" :with-header="false" size="60%">
-      <gan-menu :main="false"></gan-menu>
+    <el-drawer title="菜单" :visible.sync="drawer" :with-header="false" size="60%" ref="drawermenu">
+      <gan-menu :main="false" @menu-changed="handleMenuChanged"></gan-menu>
     </el-drawer>
   </div>
 </template>
@@ -40,6 +40,9 @@ export default {
     },
     handleRegisterClick() {
       this.$router.push('/register');
+    },
+    handleMenuChanged() {
+      this.$refs.drawermenu.closeDrawer();
     }
   },
   components: {
