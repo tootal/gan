@@ -1,20 +1,19 @@
 <template>
-  <div class="forum">
-    <el-card class="forum-card">
-      <el-table :data="tableData" class="forum-table">
-        <el-table-column type="index" min-width="5px"></el-table-column>
-        <el-table-column prop="topic" label="主题" min-width="160px" v-slot="{ row }">
-          <router-link :to="'/forum/' + row.index" class="topic-link">{{ row.topic }}</router-link>
-        </el-table-column>
-        <el-table-column prop="author" label="作者" min-width="60px" v-slot="{ row }">
-          <router-link :to="'/user/' + row.author" class="topic-link">{{ row.author }}</router-link>
-        </el-table-column>
-        <el-table-column prop="reply" label="回复" min-width="60px" sortable></el-table-column>
-      </el-table>
-    </el-card>
-  </div>
+  <gan-content>
+    <el-table :data="tableData" class="forum-table">
+      <el-table-column type="index" min-width="5px"></el-table-column>
+      <el-table-column prop="topic" label="主题" min-width="160px" v-slot="{ row }">
+        <router-link :to="'/forum/' + row.index" class="topic-link">{{ row.topic }}</router-link>
+      </el-table-column>
+      <el-table-column prop="author" label="作者" min-width="60px" v-slot="{ row }">
+        <router-link :to="'/user/' + row.author" class="topic-link">{{ row.author }}</router-link>
+      </el-table-column>
+      <el-table-column prop="reply" label="回复" min-width="60px" sortable></el-table-column>
+    </el-table>
+  </gan-content>
 </template>
 <script>
+import GanContent from "../layouts/GanContent.vue";
 import {
   StatementGenerator,
   QuestionGenerator
@@ -42,25 +41,16 @@ export default {
   },
   mounted() {
     localStorage.setItem("forumData", JSON.stringify(this.tableData));
+  },
+  components: {
+    GanContent
   }
 };
 </script>
 <style scoped>
-.forum {
-  background-color: #f6f6f6;
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-.forum-card {
-  max-width: 1024px;
-  margin: 0 auto;
-}
 .el-table {
   margin-top: 0;
   margin-bottom: 0;
-}
-.el-table__row:hover {
-  cursor: pointer;
 }
 .topic-link {
   text-decoration: none;

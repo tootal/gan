@@ -1,11 +1,6 @@
 <template>
-  <div>
-    <el-carousel
-      :height="autoHeight"
-      style="max-width: 1024px"
-      class="mx-auto"
-      indicator-position="outside"
-    >
+  <gan-content :card-body-style="{ padding: '0' }">
+    <el-carousel :height="autoHeight" indicator-position="outside">
       <el-carousel-item v-for="i in pics" :key="i">
         <el-image
           :src="require('../assets/scenic/' + i + '.jpg')"
@@ -15,13 +10,11 @@
         />
       </el-carousel-item>
     </el-carousel>
-    <p>测试文字</p>
-    <p>测试文字</p>
-    <p>测试文字</p>
-    <p>测试文字</p>
-  </div>
+    <p v-for="i in 4" :key="i" style="padding: 400px 0" class="text-center">测试文字{{i}}</p>
+  </gan-content>
 </template>
 <script>
+import GanContent from "../layouts/GanContent.vue";
 export default {
   name: "GanIndex",
   data() {
@@ -35,12 +28,9 @@ export default {
       if (this.width <= 1024) return this.width / 4 + "px";
       else return 1024 / 4 + "px";
     }
+  },
+  components: {
+    GanContent
   }
 };
 </script>
-<style scoped>
-p {
-  text-align: center;
-  padding: 400px 0;
-}
-</style>
