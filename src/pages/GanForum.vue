@@ -22,6 +22,9 @@ export default {
   name: "GanForum",
   computed: {
     tableData: function() {
+      if (localStorage['forumData']) {
+        return JSON.parse(localStorage['forumData'])
+      }
       let d = [];
       for (let i = 0; i < 3 + Math.floor(60 * Math.random()); i++) {
         let o = {};
@@ -37,6 +40,7 @@ export default {
   },
   mounted() {
     this.$root.forumData = this.tableData;
+    localStorage.setItem('forumData', JSON.stringify(this.tableData));
   }
 };
 </script>
