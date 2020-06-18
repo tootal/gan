@@ -9,7 +9,7 @@
 <script>
 import BullshitGenerator from "../utils/BullshitGenerator.js";
 export default {
-  name: "GanPost",
+  name: "GanDetail",
   computed: {
     post() {
       return this.$root.forumData[this.$route.params.id - 1];

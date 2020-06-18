@@ -10,7 +10,7 @@ import GanIndex from './pages/GanIndex.vue'
 import GanForum from './pages/GanForum.vue'
 import GanLocation from './pages/GanLocation.vue'
 import GanError from './pages/GanError.vue'
-import GanPost from './pages/GanPost.vue'
+import GanDetail from './pages/GanDetail.vue'
 
 Vue.use(VueRouter)
 Vue.use(BaiduMap, {
@@ -49,8 +49,8 @@ const router = new VueRouter({
     },
     {
       path: '/forum/:id',
-      component: GanPost,
-      name: 'post',
+      component: GanDetail,
+      name: 'detail',
     },
     {
       path: '/location',
