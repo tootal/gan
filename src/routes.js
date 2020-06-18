@@ -25,7 +25,10 @@ let routes = [
   {
     path: '/post',
     component: GanPost,
-    name: 'post'
+    name: 'post',
+    meta: {
+      keepAlive: false
+    }
   },
   {
     path: '/location',

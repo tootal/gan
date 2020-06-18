@@ -2,7 +2,7 @@
   <gan-content :content-style="{ padding: '40px 0' }">
     <el-form ref="form" :model="form" label-width="80px">
       <el-form-item label="主题">
-        <el-input v-model="form.topic"></el-input>
+        <el-input v-model="form.topic" v-focus></el-input>
       </el-form-item>
       <el-form-item label="作者">
         <el-input v-model="form.author"></el-input>

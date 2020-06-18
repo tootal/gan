@@ -3,8 +3,9 @@
     <gan-layout>
       <div class="body">
         <keep-alive>
-          <router-view></router-view>
+          <router-view v-if="$route.meta.keepAlive !== false"></router-view>
         </keep-alive>
+        <router-view v-if="$route.meta.keepAlive === false"></router-view>
       </div>
     </gan-layout>
   </div>

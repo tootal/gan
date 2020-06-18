@@ -6,6 +6,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import App from './App.vue'
 import './styles/gan.scss'
 import routes from './routes.js'
+import directives from './directives.js'
 
 Vue.use(VueRouter)
 Vue.use(BaiduMap, {
@@ -32,6 +33,11 @@ const router = new VueRouter({
   },
   routes
 })
+
+for (let d in directives) {
+  Vue.directive(d, directives[d]);
+}
+
 new Vue({
   el: '#app',
   router,
