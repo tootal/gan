@@ -1,5 +1,6 @@
 <template>
   <gan-content>
+    <p>{{ readme }}</p>
     <h2>开发者工具</h2>
     <el-button @click="showCache">查看本地缓存数据</el-button>
     <el-button type="danger" plain @click="clearForumCache">清除论坛缓存</el-button>
@@ -8,8 +9,14 @@
 </template>
 <script>
 import GanContent from "../layouts/GanContent.vue";
+import readme from '../../README.md'
 export default {
   name: "GanAbout",
+  data() {
+    return {
+      readme: readme
+    }
+  },
   methods: {
     showCache() {
       console.log(window.localStorage);
