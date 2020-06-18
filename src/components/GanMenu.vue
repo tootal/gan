@@ -44,7 +44,11 @@ export default {
 </script>
 <style scoped>
 .el-menu-item {
+  font-size: 15px;
   height: 50px;
   line-height: 50px;
+}
+.is-active {
+  font-weight: bold;
 }
 </style>
