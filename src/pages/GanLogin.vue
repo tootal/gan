@@ -1,7 +1,7 @@
 <template>
-  <gan-content :content-style="{ padding: '60px 0' }">
+  <gan-content :content-style="{ padding: '50px 0' }">
     <h1 class="text-center">登录</h1>
-    <el-form ref="form" :model="form" label-width="80px">
+    <el-form ref="form" :model="form" label-width="80px" label-position="top">
       <el-form-item label="用户名">
         <el-input v-model="form.user" v-focus></el-input>
       </el-form-item>
@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     handleLogin() {
-      
+
     }
   },
   components: {
