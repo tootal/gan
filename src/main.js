@@ -38,8 +38,27 @@ for (let d in directives) {
   Vue.directive(d, directives[d]);
 }
 
-new Vue({
+var _hmt = _hmt || [];
+window._hmt = _hmt;
+(function () {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?4e69e35683f7297b606b84516aacefbf";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+
+router.beforeEach((to, from, next) => {
+  if (_hmt) {
+    if (to.path) {
+      _hmt.push(['_trackPageview', to.fullPath]);
+    }
+  }
+  next();
+});
+
+const app = new Vue({
   el: '#app',
   router,
   render: h => h(App),
 })
+window.app = app
