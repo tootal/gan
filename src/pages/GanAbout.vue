@@ -34,10 +34,12 @@
       </div>
     </el-timeline>
     <h2>开发者工具</h2>
-    <el-button @click="showCache">查看本地缓存数据</el-button>
-    <el-button @click="showForumCache">查看论坛缓存数据</el-button>
-    <el-button type="danger" plain @click="clearForumCache">清除论坛缓存</el-button>
-    <el-button type="danger" plain @click="clearCache">清除所有缓存</el-button>
+    <div class="buttons">
+      <el-button @click="showCache">查看本地缓存数据</el-button>
+      <el-button @click="showForumCache">查看论坛缓存数据</el-button>
+      <el-button type="danger" plain @click="clearForumCache">清除论坛缓存</el-button>
+      <el-button type="danger" plain @click="clearCache">清除所有缓存</el-button>
+    </div>
   </gan-content>
 </template>
 <script>
@@ -116,5 +118,12 @@ export default {
 .abbr-commit {
   color: red;
   margin-right: 5px;
+}
+.el-button {
+  margin: 10px 5px;
+}
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
 }
 </style>
