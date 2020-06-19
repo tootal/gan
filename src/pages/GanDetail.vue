@@ -11,6 +11,9 @@
       <h3 class="title">{{ post.topic }}</h3>
       <p class="article" v-for="(o, i) in article" :key="i">{{ o }}</p>
     </gan-content>
+    <gan-content v-for="i in post.reply" :key="i">
+      回复 {{ i }}
+    </gan-content>
   </div>
 </template>
 <script>
