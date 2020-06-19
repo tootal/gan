@@ -1,6 +1,6 @@
 <template>
   <gan-content card-padding="0">
-    <el-carousel :height="autoHeight" indicator-position="outside">
+    <el-carousel :height="autoHeight" indicator-position="none">
       <el-carousel-item v-for="i in pics" :key="i">
         <el-image
           :src="require('../assets/scenic/' + i + '.jpg')"
