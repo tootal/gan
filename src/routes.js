@@ -10,6 +10,7 @@ import GanLogin from './pages/GanLogin.vue'
 import GanHistory from './pages/GanHistory.vue'
 import GanCulture from './pages/GanCulture.vue'
 import GanEconomy from './pages/GanEconomy.vue'
+import GanUser from './pages/GanUser.vue'
 
 let routes = [
   {
@@ -64,6 +65,11 @@ let routes = [
     meta: {
       keepAlive: false
     }
+  },
+  {
+    path: '/user/:id',
+    component: GanUser,
+    name: 'user',
   },
   {
     path: '/history',
