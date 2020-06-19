@@ -71,3 +71,13 @@ body {
 .shadow-bottom {
   box-shadow: 0 5px 5px -5px #888;
 }
+
+a {
+  color: #409eff;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #66b1ff;
+  text-decoration: underline;
+}
