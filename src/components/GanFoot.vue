@@ -1,5 +1,5 @@
 <template>
-  <div class="foot text-center">
+  <div class="foot text-center shadow-top">
     <p>©2020 章又贡 版权所有</p>
     <p>本站图文内容版权属于原创作者，未经许可不得转载</p>
   </div>
@@ -21,6 +21,5 @@ p {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  box-shadow: 0 0 2px #888;
 }
 </style>

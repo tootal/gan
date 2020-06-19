@@ -6,7 +6,7 @@
         <div>GAN.TOOTAL.XYZ</div>
       </el-col>
     </el-row>
-    <div class="top-menu">
+    <div class="top-menu shadow-bottom">
       <gan-menu></gan-menu>
     </div>
     <slot></slot>

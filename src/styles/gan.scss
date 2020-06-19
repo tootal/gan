@@ -63,3 +63,11 @@ body {
 .fit-contain {
   object-fit: contain;
 }
+
+.shadow-top {
+  box-shadow: 0 -5px 5px -5px #888;
+}
+
+.shadow-bottom {
+  box-shadow: 0 5px 5px -5px #888;
+}
