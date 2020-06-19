@@ -3,7 +3,7 @@
     <gan-content>
       <el-alert
         v-if="!post.content"
-        title="此文章内容根据随机算法自动生成，不代表本站赞成文章的内容或立场。"
+        title="此文章内容及评论根据随机算法自动生成，不代表本站赞成文章及评论的内容或立场。"
         type="warning"
         show-icon
         :closable="false"
@@ -11,14 +11,15 @@
       <h3 class="title">{{ post.topic }}</h3>
       <p class="article" v-for="(o, i) in article" :key="i">{{ o }}</p>
     </gan-content>
-    <gan-content v-for="i in post.reply" :key="i">
-      回复 {{ i }}
+    <gan-content v-for="(reply, index) in replys" :key="index">
+      {{ reply }}
     </gan-content>
   </div>
 </template>
 <script>
 import GanContent from "../layouts/GanContent.vue";
 import BullshitGenerator from "../utils/BullshitGenerator.js";
+import ReplyGenerator from '../utils/ReplyGenerator.js';
 export default {
   name: "GanDetail",
   computed: {
@@ -40,6 +41,9 @@ export default {
         return BullshitGenerator(this.post.statement);
       }
       return [];
+    },
+    replys() {
+      return ReplyGenerator(this.post.topic, this.post.reply);
     }
   },
   components: {
