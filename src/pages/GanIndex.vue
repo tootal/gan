@@ -1,5 +1,5 @@
 <template>
-  <gan-content :card-body-style="{ padding: '0' }">
+  <gan-content card-padding="0">
     <el-carousel :height="autoHeight" indicator-position="outside">
       <el-carousel-item v-for="i in pics" :key="i">
         <el-image

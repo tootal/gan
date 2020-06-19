@@ -1,5 +1,6 @@
 <template>
-  <gan-content :content-style="{ padding: '50px 0' }">
+  <gan-content content-padding="50px 0"
+    max-width="768px">
     <h1 class="text-center">登录</h1>
     <el-form ref="form" :model="form" label-width="80px" label-position="top">
       <el-form-item label="用户名">

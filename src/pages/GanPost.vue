@@ -1,5 +1,6 @@
 <template>
-  <gan-content :content-style="{ padding: '30px 0' }">
+  <gan-content content-padding="40px 0"
+    max-width="992px">
     <h1 class="text-center">发帖</h1>
     <el-form ref="form" :model="form" label-width="80px">
       <el-form-item label="主题">
