@@ -1,6 +1,6 @@
 <template>
   <gan-content>
-    <h2>注册</h2>
+    <h1 class="text-center">注册</h1>
   </gan-content>
 </template>
 <script>
