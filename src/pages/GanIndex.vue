@@ -1,20 +1,28 @@
 <template>
-  <gan-content card-padding="0">
-    <el-carousel :height="autoHeight" indicator-position="none">
-      <el-carousel-item v-for="i in pics" :key="i">
-        <el-image
-          :src="require('../assets/scenic/' + i + '.jpg')"
-          :alt="i"
-          :title="i"
-          style="width: 100%; height: 100%"
-        />
-      </el-carousel-item>
-    </el-carousel>
-    <p v-for="i in 4" :key="i" style="padding: 400px 0" class="text-center">测试文字{{i}}</p>
-  </gan-content>
+  <div class="index">
+    <gan-content card-padding="0">
+      <el-carousel :height="autoHeight" indicator-position="none">
+        <el-carousel-item v-for="i in pics" :key="i">
+          <el-image
+            :src="require('../assets/scenic/' + i + '.jpg')"
+            :alt="i"
+            :title="i"
+            style="width: 100%; height: 100%"
+          />
+        </el-carousel-item>
+      </el-carousel>
+      <!-- <p v-for="i in 4" :key="i" style="padding: 400px 0" class="text-center">测试文字{{i}}</p> -->
+    </gan-content>
+    <div class="videos">
+      <div class="videos-content">
+        <gan-video v-for="i in 22" :key="i">视频卡片 {{ i }}</gan-video>
+      </div>
+    </div>
+  </div>
 </template>
 <script>
 import GanContent from "../layouts/GanContent.vue";
+import GanVideo from "../components/GanVideo.vue";
 export default {
   name: "GanIndex",
   data() {
@@ -30,7 +38,25 @@ export default {
     }
   },
   components: {
-    GanContent
+    GanContent,
+    GanVideo
   }
 };
 </script>
+<style scoped>
+.videos {
+  background-color: #f6f6f6;
+}
+.videos-content {
+  margin: 0 auto;
+  padding: 20px 0;
+  max-width: 1024px;
+  display: grid;
+  justify-content: space-between;
+  grid-template-columns: repeat(auto-fill, 240px);
+}
+
+.gan-video {
+  margin: 5px 0px;
+}
+</style>
