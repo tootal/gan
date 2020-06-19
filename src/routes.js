@@ -49,12 +49,18 @@ let routes = [
   {
     path: '/register',
     component: GanRegister,
-    name: 'register'
+    name: 'register',
+    meta: {
+      keepAlive: false
+    }
   },
   {
     path: '/login',
     component: GanLogin,
-    name: 'login'
+    name: 'login',
+    meta: {
+      keepAlive: false
+    }
   },
   {
     path: '*',

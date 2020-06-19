@@ -9,7 +9,7 @@
         <el-input v-model="form.password"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="handlePost">注册</el-button>
+        <el-button type="primary" @click="handleRegister">注册</el-button>
       </el-form-item>
     </el-form>
   </gan-content>
@@ -25,6 +25,10 @@ export default {
         password: "",
       }
     };
+  },
+  methods: {
+    handleRegister() {
+    }
   },
   components: {
     GanContent
