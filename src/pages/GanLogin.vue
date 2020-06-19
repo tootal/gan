@@ -1,12 +1,12 @@
 <template>
   <gan-content>
-    <h2>注册</h2>
+    <h2>登录</h2>
   </gan-content>
 </template>
 <script>
 import GanContent from "../layouts/GanContent.vue";
 export default {
-  name: "GanRegister",
+  name: "GanLogin",
   components: {
     GanContent
   }
