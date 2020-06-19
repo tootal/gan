@@ -28,6 +28,7 @@
 import GanContent from "../layouts/GanContent.vue";
 import BullshitGenerator from "../utils/BullshitGenerator.js";
 import ReplyGenerator from "../utils/ReplyGenerator.js";
+import Cookies from "js-cookie";
 export default {
   name: "GanDetail",
   computed: {
@@ -56,6 +57,25 @@ export default {
   },
   components: {
     GanContent
+  },
+  mounted() {
+    window.addEventListener("scroll", this.handleScroll);
+    let oldPos = Cookies.get(`forum_${this.$route.params.id}_position`);
+    if (oldPos) {
+      window.scrollTo({
+        top: oldPos,
+        behavior: "smooth"
+      });
+    }
+  },
+  methods: {
+    handleScroll() {
+      let scrollTop =
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        document.body.scrollTop;
+      Cookies.set(`forum_${this.$route.params.id}_position`, scrollTop);
+    }
   }
 };
 </script>
