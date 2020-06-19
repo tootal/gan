@@ -8,6 +8,7 @@ import GanAbout from './pages/GanAbout.vue'
 import GanRegister from './pages/GanRegister.vue'
 import GanLogin from './pages/GanLogin.vue'
 import GanHistory from './pages/GanHistory.vue'
+import GanCulture from './pages/GanCulture.vue'
 
 let routes = [
   {
@@ -67,6 +68,11 @@ let routes = [
     path: '/history',
     component: GanHistory,
     name: 'history',
+  },
+  {
+    path: '/culture',
+    component: GanCulture,
+    name: 'culture',
   },
   {
     path: '*',
