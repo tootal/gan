@@ -1,10 +1,17 @@
 <template>
-  <gan-content>
-    <h3 class="title">{{ post.topic }}</h3>
-    <p class="article" v-for="(o, i) in article" :key="i">{{ o }}</p>
-    <el-alert v-if="!post.content" title="此文章内容根据随机算法自动生成，不代表本站赞成文章的内容或立场。" 
-      type="warning" show-icon :closable="false"></el-alert>
-  </gan-content>
+  <div>
+    <gan-content>
+      <el-alert
+        v-if="!post.content"
+        title="此文章内容根据随机算法自动生成，不代表本站赞成文章的内容或立场。"
+        type="warning"
+        show-icon
+        :closable="false"
+      ></el-alert>
+      <h3 class="title">{{ post.topic }}</h3>
+      <p class="article" v-for="(o, i) in article" :key="i">{{ o }}</p>
+    </gan-content>
+  </div>
 </template>
 <script>
 import GanContent from "../layouts/GanContent.vue";
