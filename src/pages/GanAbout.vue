@@ -4,13 +4,34 @@
     <h2>开发记录</h2>
     <el-timeline>
       <el-timeline-item
-        v-for="(log, index) in devlogs"
+        v-for="(log, index) in logs"
         :key="index"
         :timestamp="log.time"
         :color="log.color"
         size="large"
-      ><span class="abbr-commit">{{log.abbrCommit}}</span>{{log.message}}
+      >
+        <span class="abbr-commit">{{log.abbrCommit}}</span>
+        {{log.message}}
       </el-timeline-item>
+      <div v-if="logsMore && logsMore.length > 0">
+        <div v-show="!showLogsMore">
+          <el-divider>
+            <el-button @click="showLogsMore = true">显示更多</el-button>
+          </el-divider>
+        </div>
+        <div v-show="showLogsMore">
+          <el-timeline-item
+            v-for="(log, index) in logsMore"
+            :key="index"
+            :timestamp="log.time"
+            :color="log.color"
+            size="large"
+          >
+            <span class="abbr-commit">{{log.abbrCommit}}</span>
+            {{log.message}}
+          </el-timeline-item>
+        </div>
+      </div>
     </el-timeline>
     <h2>开发者工具</h2>
     <el-button @click="showCache">查看本地缓存数据</el-button>
@@ -28,7 +49,8 @@ export default {
   name: "GanAbout",
   data() {
     return {
-      readme: readme
+      readme: readme,
+      showLogsMore: false
     };
   },
   computed: {
@@ -46,6 +68,12 @@ export default {
       }
       logs[0].color = "#0bbd87";
       return logs;
+    },
+    logs() {
+      return this.devlogs.slice(0, 5);
+    },
+    logsMore() {
+      return this.devlogs.slice(5);
     }
   },
   methods: {
