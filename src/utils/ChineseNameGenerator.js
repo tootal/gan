@@ -1,3 +1,4 @@
+import seedrandom from 'seedrandom'
 // 参考：https://segmentfault.com/q/1010000006941249
 let 百家姓 = [
   '赵', '钱', '孙', '李', '周', '吴', '郑', '王', '冯', '陈', '褚', '卫', '蒋', '沈', '韩', '杨',
@@ -76,16 +77,18 @@ let 常用字 = [
   '棋', '端', '腿', '招', '释', '介', '烧', '误', '乾', '坤', '泉', '软', '洞', '彤', '彦', '楠',
 ];
 
-function 随便取一个(列表) {
-  let 坐标 = Math.floor(Math.random() * 列表.length);
-  return 列表[坐标];
-}
 
-export function ChineseNameGenerator() {
-  let name = 随便取一个(百家姓);
-  name = name + 随便取一个(常用字);
-  if (Math.random() > 0.4) {
-    name = name + 随便取一个(常用字);
+export default function (seed) {
+  function rand(seed) {
+    return seed ? seedrandom(seed)() : Math.random();
+  }
+  function pick(list, seed) {
+    return list[Math.floor(rand(seed) * list.length)];
+  }
+  let name = pick(百家姓, seed);
+  name = name + pick(常用字, seed);
+  if (rand(seed) > 0.4) {
+    name = name + pick(常用字, seed * seed);
   }
   return name;
 }

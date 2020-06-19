@@ -18,7 +18,7 @@ import {
   StatementGenerator,
   QuestionGenerator
 } from "../utils/QuestionGenerator.js";
-import { ChineseNameGenerator } from "../utils/ChineseNameGenerator.js";
+import ChineseNameGenerator from "../utils/ChineseNameGenerator.js";
 export default {
   name: "GanForum",
   computed: {

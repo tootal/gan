@@ -12,14 +12,22 @@
       <p class="article" v-for="(o, i) in article" :key="i">{{ o }}</p>
     </gan-content>
     <gan-content v-for="(reply, index) in replys" :key="index">
-      {{ reply }}
+      <div class="reply-avatar">
+        <el-avatar icon="el-icon-user-solid"></el-avatar>
+      </div>
+      <div class="reply-main">
+        <div class="reply-author">
+          <router-link :to="'/user/' + reply.author" class="reply-author-link">{{ reply.author }}</router-link>
+        </div>
+        <div class="reply-content">{{ reply.content }}</div>
+      </div>
     </gan-content>
   </div>
 </template>
 <script>
 import GanContent from "../layouts/GanContent.vue";
 import BullshitGenerator from "../utils/BullshitGenerator.js";
-import ReplyGenerator from '../utils/ReplyGenerator.js';
+import ReplyGenerator from "../utils/ReplyGenerator.js";
 export default {
   name: "GanDetail",
   computed: {
@@ -64,5 +72,16 @@ export default {
   padding: 0px 10px;
   line-height: 180%;
   text-align: justify;
+}
+.reply-avatar {
+  float: left;
+  margin-right: 15px;
+}
+.reply-author {
+  font-weight: bold;
+}
+.reply-author-link {
+  text-decoration: none;
+  color: black;
 }
 </style>
