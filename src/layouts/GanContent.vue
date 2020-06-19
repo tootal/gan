@@ -1,6 +1,6 @@
 <template>
-  <div class="content" :style="contentStyle">
-    <el-card class="content-card" :body-style="cardBodyStyle">
+  <div :style="contentStyle">
+    <el-card :style="cardStyle" class="content-card" :body-style="cardBodyStyle">
       <slot></slot>
     </el-card>
   </div>
@@ -9,6 +9,15 @@
 export default {
   name: "GanContent",
   props: {
+    cardStyle: {
+      type: Object,
+      default() {
+        return {
+          maxWidth: "1024px",
+          margin: "0 auto"
+        };
+      }
+    },
     cardBodyStyle: {
       type: Object,
       default() {
@@ -20,20 +29,13 @@ export default {
     contentStyle: {
       type: Object,
       default() {
-        return {};
+        return {
+          backgroundColor: "#f6f6f6",
+          paddingTop: "10px",
+          paddingBottom: "10px"
+        };
       }
     }
   }
 };
 </script>
-<style scoped>
-.content {
-  background-color: #f6f6f6;
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-.content-card {
-  max-width: 1024px;
-  margin: 0 auto;
-}
-</style>
