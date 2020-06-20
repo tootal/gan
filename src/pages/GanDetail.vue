@@ -40,12 +40,10 @@ import GanContent from "../layouts/GanContent.vue";
 import BullshitGenerator from "../utils/BullshitGenerator.js";
 import ReplyGenerator from "../utils/ReplyGenerator.js";
 import Cookies from "js-cookie";
-import axios from "axios";
 export default {
   name: "GanDetail",
   data() {
     return {
-      readCount: 0,
       id: this.$route.params.id,
       replyPopVisible: false,
       forumData: {},
@@ -93,26 +91,6 @@ export default {
       }
     }
     this.syncForumData();
-    const url =
-      "https://openapi.baidu.com/rest/2.0/tongji/report/getData?access_token=121.55d7323c06e8653a55f7956f29bcea69.YaRRoVQjy1xVhNLBr2fuMrnpYasEaq7GDV8UhN8.a7Fizw&site_id=15225609&start_date=20200619&end_date=20200719&metrics=pv_count&method=visit%2Ftoppage%2Fa";
-    axios
-      .get(url)
-      .then(r => {
-        let count = 0;
-        let urls = r.data.result.items[0];
-        let pv = r.data.result.items[1];
-        for (let i = 0; i < urls.length; i++) {
-          let u = new URL(urls[i][0].name);
-          if (u.pathname === `/forum/${this.$route.params.id}`) {
-            count += pv[i][0];
-          }
-        }
-        this.readCount = count;
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-
     window.addEventListener("scroll", this.handleScroll);
     let oldPos = Cookies.get(`forum_${this.$route.params.id}_position`);
     if (oldPos) {

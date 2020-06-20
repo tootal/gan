@@ -34,6 +34,7 @@
       </div>
     </el-timeline>
     <h2>开发者工具</h2>
+    网站访问量：{{ visitCount }}
     <div class="buttons">
       <el-button @click="clearLoginCookie">删除登录Cookie</el-button>
       <el-button @click="showCache">查看本地缓存数据</el-button>
@@ -48,14 +49,16 @@ import GanContent from "../layouts/GanContent.vue";
 import readme from "../../README.md";
 import VueMarkdown from "vue-markdown";
 import gitlog from "../../scripts/gitlog.txt";
-import Cookies from 'js-cookie';
-import vm from '../main.js';
+import Cookies from "js-cookie";
+import vm from "../main.js";
+import axios from "axios";
 export default {
   name: "GanAbout",
   data() {
     return {
       readme: readme,
-      showLogsMore: false
+      showLogsMore: false,
+      visitCount: 0
     };
   },
   computed: {
@@ -83,9 +86,9 @@ export default {
   },
   methods: {
     clearLoginCookie() {
-      Cookies.remove('loginUser');
-      vm.$emit('user-changed');
-      this.$message.success('已删除登录Cookie');
+      Cookies.remove("loginUser");
+      vm.$emit("user-changed");
+      this.$message.success("已删除登录Cookie");
     },
     showCache() {
       console.log(window.localStorage);
@@ -119,6 +122,26 @@ export default {
   components: {
     GanContent,
     VueMarkdown
+  },
+  mounted() {
+    const base_url = "https://openapi.baidu.com/rest/2.0/tongji/report/getData";
+    const access_token =
+      "121.55d7323c06e8653a55f7956f29bcea69.YaRRoVQjy1xVhNLBr2fuMrnpYasEaq7GDV8UhN8.a7Fizw";
+    const site_id = "15225609";
+    const url = `${base_url}?access_token=${access_token}&site_id=${site_id}&start_date=20200619&end_date=20200719&metrics=pv_count&method=visit%2Ftoppage%2Fa`;
+    axios
+      .get(url)
+      .then(r => {
+        let count = 0;
+        let pv = r.data.result.items[1];
+        for (let i of pv) {
+          count += i[0];
+        }
+        this.visitCount = count;
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
   }
 };
 </script>
