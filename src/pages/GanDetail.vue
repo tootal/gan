@@ -9,7 +9,10 @@
         :closable="false"
       ></el-alert>
       <h3 class="title">{{ post.topic }}</h3>
-      <el-divider v-if="readCount">阅读：{{ readCount }}</el-divider>
+      <el-divider>
+        作者：
+        <router-link :to="'/user/' + post.author">{{ post.author }}</router-link>
+      </el-divider>
       <p class="article" v-for="(o, i) in post.content" :key="'article' + i">{{ o }}</p>
       <div class="text-right">
         <el-button type="primary" @click="handleReply">回复</el-button>
@@ -25,7 +28,7 @@
         </div>
         <div class="reply-content">{{ reply.content }}</div>
       </div>
-      
+
       <div class="reply-op">
         <el-button type="text" @click="handleDel(index)">删除</el-button>
       </div>
@@ -47,7 +50,7 @@ export default {
       replyPopVisible: false,
       forumData: {},
       post: {
-        author: '',
+        author: "",
         topic: "未找到该帖子",
         content: [],
         statement: "",
@@ -82,7 +85,10 @@ export default {
       }
     }
     if (this.post.replys.length === 0) {
-      for (let o of ReplyGenerator(this.post.topic + this.post.author, this.post.reply)) {
+      for (let o of ReplyGenerator(
+        this.post.topic + this.post.author,
+        this.post.reply
+      )) {
         this.post.replys.push(o);
       }
     }
