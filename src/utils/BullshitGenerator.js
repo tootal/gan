@@ -208,11 +208,12 @@ function 字符串哈希值(str,caseSensitive){
   return  (hash & 0x7FFFFFFF);
 }
 
-function 生成文章(主题, 最大字数 = 12000) {
+function 生成文章(主题) {
   随机种子 = 字符串哈希值(主题);
   let 文章 = []
   let 段落 = '';
   let 文章长度 = 0;
+  let 最大字数 = 6000 * 同余发生器();
   while (文章长度 < 最大字数) {
     let 随机数 = 随便取一个数();
     if (随机数 < 5 && 段落.length > 200) {

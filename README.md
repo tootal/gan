@@ -30,6 +30,7 @@
 此外，网站开发过程中参考了部分[Bootstrap的样式代码](https://github.com/twbs/bootstrap/tree/main/scss)，设计布局时参考了[百度](https://www.baidu.com/s?wd=baidu)、[知乎](https://www.zhihu.com/)、[MCBBS](https://www.mcbbs.net/forum.php)、[Vue Forum](https://forum.vuejs.org/)等网站的设计。
 
 ### 待办事项
+* 调整文章长度
 * 允许回复评论
 * 允许嵌套回复评论
 * 自动化生成开发记录
@@ -40,5 +41,4 @@
 * 允许已登录用户上传头像
 * 随机生成用户头像
 * 允许举报（移除）评论
-* 调整文章长度
 * 发布到Github Release
