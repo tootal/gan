@@ -51,7 +51,8 @@ export default {
     return {
       count: 0,
       replyPopVisible: false,
-      manuallyReplys: []
+      manuallyReplys: [],
+      replys: []
     };
   },
   computed: {
@@ -74,9 +75,6 @@ export default {
       }
       return [];
     },
-    replys() {
-      return ReplyGenerator(this.post.topic, this.post.reply);
-    }
   },
   components: {
     GanContent
@@ -107,6 +105,7 @@ export default {
     } else {
       this.manuallyReplys = [];
     }
+    this.replys = ReplyGenerator(this.post.topic, this.post.reply - this.manuallyReplys.length)
     window.addEventListener("scroll", this.handleScroll);
     let oldPos = Cookies.get(`forum_${this.$route.params.id}_position`);
     if (oldPos) {
@@ -135,6 +134,9 @@ export default {
           "forumReply" + this.$route.params.id,
           JSON.stringify(this.manuallyReplys)
         );
+        let data = JSON.parse(localStorage["forumData"]);
+        data[this.$route.params.id].reply += 1;
+        localStorage.setItem('forumData', JSON.stringify(data));
         this.$message.success("回复成功！");
       });
     }
