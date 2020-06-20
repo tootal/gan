@@ -25,6 +25,10 @@
         </div>
         <div class="reply-content">{{ reply.content }}</div>
       </div>
+      
+      <div class="reply-op">
+        <el-button type="text" @click="handleDel(index)">删除</el-button>
+      </div>
     </gan-content>
   </div>
 </template>
@@ -138,6 +142,11 @@ export default {
         this.syncForumData();
         this.$message.success("回复成功！");
       });
+    },
+    handleDel(index) {
+      this.post.reply -= 1;
+      this.post.replys.splice(index, 1);
+      this.syncForumData();
     }
   }
 };
@@ -169,5 +178,8 @@ export default {
 .reply-author-link {
   text-decoration: none;
   color: black;
+}
+.reply-op {
+  float: right;
 }
 </style>
