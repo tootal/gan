@@ -8,7 +8,7 @@
       <el-table-column prop="author" label="作者" min-width="60px" v-slot="{ row }">
         <router-link :to="'/user/' + row.author" class="topic-link">{{ row.author }}</router-link>
       </el-table-column>
-      <el-table-column prop="reply" label="回复" min-width="60px" sortable></el-table-column>
+      <el-table-column prop="reply" label="回复" min-width="60px"></el-table-column>
       <el-table-column label="操作" v-slot="{ $index: index}">
         <el-button type="text" @click="handleDel(index)">删除</el-button>
       </el-table-column>

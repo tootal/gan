@@ -9,13 +9,13 @@
         :closable="false"
       ></el-alert>
       <h3 class="title">{{ post.topic }}</h3>
-      <el-divider v-if="count">阅读：{{ count }}</el-divider>
-      <p class="article" v-for="(o, i) in article" :key="i">{{ o }}</p>
+      <el-divider v-if="readCount">阅读：{{ readCount }}</el-divider>
+      <p class="article" v-for="(o, i) in post.content" :key="'article' + i">{{ o }}</p>
       <div class="text-right">
         <el-button type="primary" @click="handleReply">回复</el-button>
       </div>
     </gan-content>
-    <gan-content v-for="(reply, index) in replys" :key="index">
+    <gan-content v-for="(reply, index) in post.replys" :key="'avatar' + index">
       <div class="reply-avatar">
         <el-avatar icon="el-icon-user-solid"></el-avatar>
       </div>
@@ -24,17 +24,6 @@
           <router-link :to="'/user/' + reply.author" class="reply-author-link">{{ reply.author }}</router-link>
         </div>
         <div class="reply-content">{{ reply.content }}</div>
-      </div>
-    </gan-content>
-    <gan-content v-for="(reply, index) in manuallyReplys" :key="index">
-      <div class="reply-avatar">
-        <el-avatar icon="el-icon-user-solid"></el-avatar>
-      </div>
-      <div class="reply-main">
-        <div class="reply-author">
-          <router-link to="/user/佚名" class="reply-author-link">佚名</router-link>
-        </div>
-        <div class="reply-content">{{ reply }}</div>
       </div>
     </gan-content>
   </div>
@@ -49,37 +38,51 @@ export default {
   name: "GanDetail",
   data() {
     return {
-      count: 0,
+      readCount: 0,
+      id: this.$route.params.id,
       replyPopVisible: false,
-      manuallyReplys: [],
-      replys: []
+      forumData: {},
+      post: {
+        author: '',
+        topic: "未找到该帖子",
+        content: [],
+        statement: "",
+        reply: 0,
+        replys: []
+      }
     };
-  },
-  computed: {
-    post() {
-      if (localStorage["forumData"]) {
-        let data = JSON.parse(localStorage["forumData"]);
-        let id = this.$route.params.id;
-        if (data && id >= 0 && data.length > id) {
-          return data[id];
-        }
-      }
-      return { topic: "未找到该帖子" };
-    },
-    article() {
-      if (this.post.content) {
-        return [this.post.content];
-      }
-      if (this.post.statement) {
-        return BullshitGenerator(this.post.statement);
-      }
-      return [];
-    },
   },
   components: {
     GanContent
   },
   mounted() {
+    if (!localStorage["forumData"]) return;
+    this.forumData = JSON.parse(localStorage["forumData"]);
+    if (!this.forumData || this.id < 0 || this.id >= this.forumData.length)
+      return;
+    for (let i in this.post) {
+      if (i === "replys") {
+        if (this.forumData[this.id][i]) {
+          for (let j of this.forumData[this.id][i]) {
+            this.post.replys.push(j);
+          }
+        }
+      } else {
+        if (this.forumData[this.id][i])
+          this.post[i] = this.forumData[this.id][i];
+      }
+    }
+    if (this.post.content.length === 0) {
+      for (let o of BullshitGenerator(this.post.statement)) {
+        this.post.content.push(o);
+      }
+    }
+    if (this.post.replys.length === 0) {
+      for (let o of ReplyGenerator(this.post.topic + this.post.author, this.post.reply)) {
+        this.post.replys.push(o);
+      }
+    }
+    this.syncForumData();
     const url =
       "https://openapi.baidu.com/rest/2.0/tongji/report/getData?access_token=121.55d7323c06e8653a55f7956f29bcea69.YaRRoVQjy1xVhNLBr2fuMrnpYasEaq7GDV8UhN8.a7Fizw&site_id=15225609&start_date=20200619&end_date=20200719&metrics=pv_count&method=visit%2Ftoppage%2Fa";
     axios
@@ -94,18 +97,12 @@ export default {
             count += pv[i][0];
           }
         }
-        this.count = count;
+        this.readCount = count;
       })
       .catch(function(error) {
         console.log(error);
       });
-    this.manuallyReplys = localStorage["forumReply" + this.$route.params.id];
-    if (this.manuallyReplys) {
-      this.manuallyReplys = JSON.parse(this.manuallyReplys);
-    } else {
-      this.manuallyReplys = [];
-    }
-    this.replys = ReplyGenerator(this.post.topic, this.post.reply - this.manuallyReplys.length)
+
     window.addEventListener("scroll", this.handleScroll);
     let oldPos = Cookies.get(`forum_${this.$route.params.id}_position`);
     if (oldPos) {
@@ -116,12 +113,16 @@ export default {
     }
   },
   methods: {
+    syncForumData() {
+      this.forumData[this.id] = this.post;
+      localStorage.setItem("forumData", JSON.stringify(this.forumData));
+    },
     handleScroll() {
       let scrollTop =
         window.pageYOffset ||
         document.documentElement.scrollTop ||
         document.body.scrollTop;
-      Cookies.set(`forum_${this.$route.params.id}_position`, scrollTop);
+      Cookies.set(`forum_${this.id}_position`, scrollTop);
     },
     handleReply() {
       this.$prompt("请输入回复内容", "回复", {
@@ -129,14 +130,12 @@ export default {
         cancelButtonText: "取消",
         inputPlaceholder: "写下你的评论..."
       }).then(({ value }) => {
-        this.manuallyReplys.push(value);
-        localStorage.setItem(
-          "forumReply" + this.$route.params.id,
-          JSON.stringify(this.manuallyReplys)
-        );
-        let data = JSON.parse(localStorage["forumData"]);
-        data[this.$route.params.id].reply += 1;
-        localStorage.setItem('forumData', JSON.stringify(data));
+        this.post.reply += 1;
+        this.post.replys.push({
+          author: "佚名",
+          content: value
+        });
+        this.syncForumData();
         this.$message.success("回复成功！");
       });
     }
