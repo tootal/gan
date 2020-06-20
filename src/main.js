@@ -62,3 +62,5 @@ const app = new Vue({
   render: h => h(App),
 })
 window.app = app
+
+export default app;

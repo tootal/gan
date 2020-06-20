@@ -17,6 +17,8 @@
 </template>
 <script>
 import GanContent from "../layouts/GanContent.vue";
+import Cookies from 'js-cookie';
+import vm from '../main.js';
 export default {
   name: "GanLogin",
   data() {
@@ -38,7 +40,9 @@ export default {
       for (let i of registedUser) {
         if (i.username === this.form.username) {
           if (i.password === this.form.password) {
+            Cookies.set('loginUser', i.username, { expires: 7 });
             this.$message.success('登录成功!');
+            vm.$emit('user-changed', i.username);
             this.$router.go(-1);
             return ;
           } else {

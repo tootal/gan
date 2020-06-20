@@ -35,6 +35,7 @@
     </el-timeline>
     <h2>开发者工具</h2>
     <div class="buttons">
+      <el-button @click="clearLoginCookie">删除登录Cookie</el-button>
       <el-button @click="showCache">查看本地缓存数据</el-button>
       <el-button @click="showForumCache">查看论坛缓存数据</el-button>
       <el-button type="danger" plain @click="clearForumCache">清除论坛缓存</el-button>
@@ -47,6 +48,8 @@ import GanContent from "../layouts/GanContent.vue";
 import readme from "../../README.md";
 import VueMarkdown from "vue-markdown";
 import gitlog from "../../scripts/gitlog.txt";
+import Cookies from 'js-cookie';
+import vm from '../main.js';
 export default {
   name: "GanAbout",
   data() {
@@ -79,6 +82,11 @@ export default {
     }
   },
   methods: {
+    clearLoginCookie() {
+      Cookies.remove('loginUser');
+      vm.$emit('user-changed');
+      this.$message.success('已删除登录Cookie');
+    },
     showCache() {
       console.log(window.localStorage);
       this.$message({

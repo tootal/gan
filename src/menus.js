@@ -12,5 +12,10 @@ export default {
     post: '发帖',
     login: '登录',
     register: '注册'
+  },
+  loginSpecial: {
+    post: '发帖',
+    user: '用户名',
+    quit: '退出'
   }
 }
