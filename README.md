@@ -1,4 +1,4 @@
-<h1 align="center">
+<h1 align="center" style="font-size: 32px">
   <a href="https://gan.tootal.xyz/" style="text-decoration: none">
     <ruby>章<rt>g</rt></ruby>
     <ruby>又<rt>à</rt></ruby>
@@ -30,9 +30,6 @@
 此外，网站开发过程中参考了部分[Bootstrap的样式代码](https://github.com/twbs/bootstrap/tree/main/scss)，设计布局时参考了[百度](https://www.baidu.com/s?wd=baidu)、[知乎](https://www.zhihu.com/)、[MCBBS](https://www.mcbbs.net/forum.php)、[Vue Forum](https://forum.vuejs.org/)等网站的设计。
 
 ### 待办事项
-
-* 首页视频卡片
-* 调整README标题大小
 * 发布到Github Release
 * 论坛文章访问量展示
 * 允许回复评论
