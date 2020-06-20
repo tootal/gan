@@ -2,13 +2,16 @@
   <gan-content>
     <el-table :data="tableData" class="forum-table">
       <el-table-column type="index" min-width="5px"></el-table-column>
-      <el-table-column prop="topic" label="主题" min-width="160px" v-slot="{ row }">
-        <router-link :to="'/forum/' + row.index" class="topic-link">{{ row.topic }}</router-link>
+      <el-table-column prop="topic" label="主题" min-width="160px" v-slot="{ row, $index: index }">
+        <router-link :to="'/forum/' + index" class="topic-link">{{ row.topic }}</router-link>
       </el-table-column>
       <el-table-column prop="author" label="作者" min-width="60px" v-slot="{ row }">
         <router-link :to="'/user/' + row.author" class="topic-link">{{ row.author }}</router-link>
       </el-table-column>
       <el-table-column prop="reply" label="回复" min-width="60px" sortable></el-table-column>
+      <el-table-column label="操作" v-slot="{ $index: index}">
+        <el-button type="text" @click="handleDel(index)">删除</el-button>
+      </el-table-column>
     </el-table>
   </gan-content>
 </template>
@@ -21,26 +24,33 @@ import {
 import ChineseNameGenerator from "../utils/ChineseNameGenerator.js";
 export default {
   name: "GanForum",
-  computed: {
-    tableData: function() {
-      if (localStorage["forumData"]) {
-        return JSON.parse(localStorage["forumData"]);
-      }
-      let d = [];
+  data() {
+    return {
+      tableData: []
+    };
+  },
+  methods: {
+    handleDel(index) {
+      this.tableData.splice(index, 1);
+      localStorage.setItem("forumData", JSON.stringify(this.tableData));
+    }
+  },
+  mounted() {
+    let forumData = localStorage["forumData"];
+    if (forumData) {
+      forumData = JSON.parse(forumData);
+      for (let i of forumData) this.tableData.push(i);
+    } else {
       for (let i = 0; i < 3 + Math.floor(60 * Math.random()); i++) {
         let o = {};
-        o.index = i + 1;
         o.statement = StatementGenerator();
         o.topic = QuestionGenerator(o.statement);
         o.author = ChineseNameGenerator();
         o.reply = Math.floor(50 * Math.random());
-        d.push(o);
+        this.tableData.push(o);
       }
-      return d;
+      localStorage.setItem("forumData", JSON.stringify(this.tableData));
     }
-  },
-  mounted() {
-    localStorage.setItem("forumData", JSON.stringify(this.tableData));
   },
   components: {
     GanContent

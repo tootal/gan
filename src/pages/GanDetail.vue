@@ -59,8 +59,8 @@ export default {
       if (localStorage["forumData"]) {
         let data = JSON.parse(localStorage["forumData"]);
         let id = this.$route.params.id;
-        if (data && id >= 0 && data.length >= id) {
-          return data[id - 1];
+        if (data && id >= 0 && data.length > id) {
+          return data[id];
         }
       }
       return { topic: "未找到该帖子" };

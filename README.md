@@ -8,10 +8,10 @@
 
 ## 章又贡是什么？
 
-“章又贡”是赣字的拆解，同时作为本站的网站名。网站主要用于介绍我的家乡“赣州”，目前网站包含以下版块：
+“章又贡”是赣字的拆解，同时作为本站的网站名。网站主要用于介绍我的家乡“赣州”同时在实践中学习Web技术。目前网站包含以下版块：
 
-* 首页
-* 论坛
+* **首页**，主要采用轮播图方式展示赣州地区的风景图，下方列出了一些关于赣州的视频。
+* **论坛**，使用前端方式模拟了一个简单的论坛。
 * 位置
 * 经济
 * 文化
@@ -28,14 +28,3 @@
 * [Element](https://element.eleme.cn/#/zh-CN) (MIT)
 
 此外，网站开发过程中参考了部分[Bootstrap的样式代码](https://github.com/twbs/bootstrap/tree/main/scss)，设计布局时参考了[百度](https://www.baidu.com/s?wd=baidu)、[知乎](https://www.zhihu.com/)、[MCBBS](https://www.mcbbs.net/forum.php)、[Vue Forum](https://forum.vuejs.org/)等网站的设计。
-
-### 待办事项
-
-* 允许嵌套回复评论
-* 自动化生成开发记录
-* 自动化发布Release
-* 添加文章目录
-* 允许已登录用户上传头像
-* 随机生成用户头像
-* 允许举报（移除）评论
-* 发布到Github Release
