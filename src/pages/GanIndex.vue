@@ -11,11 +11,15 @@
           />
         </el-carousel-item>
       </el-carousel>
-      <!-- <p v-for="i in 4" :key="i" style="padding: 400px 0" class="text-center">测试文字{{i}}</p> -->
     </gan-content>
     <div class="videos">
       <div class="videos-content">
-        <gan-video v-for="i in 22" :key="i">视频卡片 {{ i }}</gan-video>
+        <gan-video
+          v-for="i in 22" :key="i"
+          href="https://www.bilibili.com/video/BV1tt411x7K6"
+          :img-src="require('../assets/video/BV1tt411x7K6.jpg')"
+          desc="♡家乡Vlog 我回家啦! 江西赣州/各种特色小吃/朋友聚会/陪伴家人"
+          length="13:41"></gan-video>
       </div>
     </div>
   </div>
@@ -55,7 +59,6 @@ export default {
   justify-content: space-between;
   grid-template-columns: repeat(auto-fill, 240px);
 }
-
 .gan-video {
   margin: 5px 0px;
 }
