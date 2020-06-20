@@ -31,6 +31,9 @@ let routes = [
     path: '/forum/:id',
     component: GanDetail,
     name: 'detail',
+    meta: {
+      keepAlive: false
+    }
   },
   {
     path: '/post',
