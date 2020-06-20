@@ -13,24 +13,33 @@
       </el-carousel>
     </gan-content>
     <div class="videos">
+      <div class="videos-container">
+      <div v-for="(value, key) in videos" :key="key">
+        <h2> {{ key }}</h2>
       <div class="videos-content">
+        <div v-for="(v, i) in value" :key="i">
         <gan-video
-          v-for="i in 22" :key="i"
-          href="https://www.bilibili.com/video/BV1tt411x7K6"
-          :img-src="require('../assets/video/BV1tt411x7K6.jpg')"
-          desc="♡家乡Vlog 我回家啦! 江西赣州/各种特色小吃/朋友聚会/陪伴家人"
-          length="13:41"></gan-video>
+          :href="v.bv ? ('https://www.bilibili.com/video/' + v.bv) : v.href"
+          :img-src="require('../assets/video/' + (v.bv ? (v.bv + '.jpg') : v.img))"
+          :desc="v.desc"
+          :length="v.length"
+        ></gan-video>
+        </div>
+      </div>
       </div>
     </div>
+  </div>
   </div>
 </template>
 <script>
 import GanContent from "../layouts/GanContent.vue";
 import GanVideo from "../components/GanVideo.vue";
+import videos from './videos.js';
 export default {
   name: "GanIndex",
   data() {
     return {
+      videos: videos,
       width: document.body.clientWidth,
       pics: ["七里窑", "东河浮桥", "八境台", "翠微峰", "赣州中央公园", "郁孤台"]
     };
@@ -51,10 +60,16 @@ export default {
 .videos {
   background-color: #f6f6f6;
 }
-.videos-content {
+h2 {
+  margin: 0;
+}
+.videos-container {
+
   margin: 0 auto;
-  padding: 20px 0;
   max-width: 1024px;
+}
+.videos-content {
+  padding: 20px 0;
   display: grid;
   justify-content: space-between;
   grid-template-columns: repeat(auto-fill, 240px);

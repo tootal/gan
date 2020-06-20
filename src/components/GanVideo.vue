@@ -9,7 +9,7 @@
         </el-image>
         <div v-if="length" class="time-tag">{{length}}</div>
       </div>
-      <div>{{ desc }}</div>
+      <div class="desc">{{ desc }}</div>
     </el-card>
   </a>
 </template>
@@ -41,17 +41,21 @@ a {
   display: block;
   margin: 10px 0;
 }
+.el-image {
+  width: 100%;
+  height: 100%;
+}
 .el-image:hover {
   opacity: .8;
 }
 .el-card {
   width: 240px;
-  height: 200px;
+  height: 196px;
 }
 .video-content {
   position: relative;
   width: 238px;
-  height: 148px;
+  height: 142px;
 }
 .time-tag {
   position: absolute;
@@ -62,5 +66,11 @@ a {
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 5px 0 0 0;
   color: #fff;
+}
+.desc {
+  font-size: 14px;
+  line-height: 20px;
+  margin: 6px 2px 0 4px;
+  font-weight: 400;
 }
 </style>
