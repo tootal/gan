@@ -11,6 +11,9 @@
       <h3 class="title">{{ post.topic }}</h3>
       <el-divider v-if="count">阅读：{{ count }}</el-divider>
       <p class="article" v-for="(o, i) in article" :key="i">{{ o }}</p>
+      <div class="text-right">
+        <el-button type="primary" @click="handleReply">回复</el-button>
+      </div>
     </gan-content>
     <gan-content v-for="(reply, index) in replys" :key="index">
       <div class="reply-avatar">
@@ -23,6 +26,17 @@
         <div class="reply-content">{{ reply.content }}</div>
       </div>
     </gan-content>
+    <gan-content v-for="(reply, index) in manuallyReplys" :key="index">
+      <div class="reply-avatar">
+        <el-avatar icon="el-icon-user-solid"></el-avatar>
+      </div>
+      <div class="reply-main">
+        <div class="reply-author">
+          <router-link to="/user/佚名" class="reply-author-link">佚名</router-link>
+        </div>
+        <div class="reply-content">{{ reply }}</div>
+      </div>
+    </gan-content>
   </div>
 </template>
 <script>
@@ -30,13 +44,15 @@ import GanContent from "../layouts/GanContent.vue";
 import BullshitGenerator from "../utils/BullshitGenerator.js";
 import ReplyGenerator from "../utils/ReplyGenerator.js";
 import Cookies from "js-cookie";
-import axios from 'axios';
+import axios from "axios";
 export default {
   name: "GanDetail",
   data() {
     return {
-      count: 0
-    }
+      count: 0,
+      replyPopVisible: false,
+      manuallyReplys: []
+    };
   },
   computed: {
     post() {
@@ -66,21 +82,21 @@ export default {
     GanContent
   },
   mounted() {
-    const url = 'https://openapi.baidu.com/rest/2.0/tongji/report/getData?access_token=121.55d7323c06e8653a55f7956f29bcea69.YaRRoVQjy1xVhNLBr2fuMrnpYasEaq7GDV8UhN8.a7Fizw&site_id=15225609&start_date=20200619&end_date=20200719&metrics=pv_count&method=visit%2Ftoppage%2Fa';
-    axios.get(url).then(
-      r => {
-        let count = 0;
-        let urls = r.data.result.items[0];
-        let pv = r.data.result.items[1];
-        for (let i = 0; i < urls.length; i++) {
-          let u = new URL(urls[i][0].name);
-          if (u.pathname === `/forum/${this.$route.params.id}`) {
-            count += pv[i][0];
-          }
+    const url =
+      "https://openapi.baidu.com/rest/2.0/tongji/report/getData?access_token=121.55d7323c06e8653a55f7956f29bcea69.YaRRoVQjy1xVhNLBr2fuMrnpYasEaq7GDV8UhN8.a7Fizw&site_id=15225609&start_date=20200619&end_date=20200719&metrics=pv_count&method=visit%2Ftoppage%2Fa";
+    axios.get(url).then(r => {
+      let count = 0;
+      let urls = r.data.result.items[0];
+      let pv = r.data.result.items[1];
+      for (let i = 0; i < urls.length; i++) {
+        let u = new URL(urls[i][0].name);
+        if (u.pathname === `/forum/${this.$route.params.id}`) {
+          count += pv[i][0];
         }
-        this.count = count;
       }
-    )
+      this.count = count;
+    });
+    this.manuallyReplys = JSON.parse(localStorage["forumReply" + this.$route.params.id]) || [];
     window.addEventListener("scroll", this.handleScroll);
     let oldPos = Cookies.get(`forum_${this.$route.params.id}_position`);
     if (oldPos) {
@@ -97,6 +113,17 @@ export default {
         document.documentElement.scrollTop ||
         document.body.scrollTop;
       Cookies.set(`forum_${this.$route.params.id}_position`, scrollTop);
+    },
+    handleReply() {
+      this.$prompt("请输入回复内容", "回复", {
+        confirmButtonText: "回复",
+        cancelButtonText: "取消",
+        inputPlaceholder: "写下你的评论..."
+      }).then(({value}) => {
+        this.manuallyReplys.push(value);
+        localStorage.setItem("forumReply" + this.$route.params.id, JSON.stringify(this.manuallyReplys));
+        this.$message.success('回复成功！');
+      });
     }
   }
 };
