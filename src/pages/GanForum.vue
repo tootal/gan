@@ -16,6 +16,10 @@
   </gan-content>
 </template>
 <script>
+import Vue from 'vue'
+import { Table, TableColumn } from 'element-ui'
+Vue.use(Table)
+Vue.use(TableColumn)
 import GanContent from "../layouts/GanContent.vue";
 import {
   StatementGenerator,

@@ -45,6 +45,12 @@
   </gan-content>
 </template>
 <script>
+import Vue from 'vue'
+import { Divider, Timeline, TimelineItem } from 'element-ui'
+Vue.use(Divider)
+Vue.use(Timeline)
+Vue.use(TimelineItem)
+
 import GanContent from "../layouts/GanContent.vue";
 import readme from "../../README.md";
 import VueMarkdown from "vue-markdown";

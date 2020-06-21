@@ -36,6 +36,11 @@
   </div>
 </template>
 <script>
+import Vue from 'vue';
+import { Avatar, Divider } from 'element-ui';
+Vue.use(Avatar)
+Vue.use(Divider)
+
 import GanContent from "../layouts/GanContent.vue";
 import BullshitGenerator from "../utils/BullshitGenerator.js";
 import ReplyGenerator from "../utils/ReplyGenerator.js";
