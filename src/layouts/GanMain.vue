@@ -1,11 +1,11 @@
 <template>
-  <div class="main">
-    <el-row type="flex" align="middle">
-      <el-col :span="24" class="text-center">
+  <div>
+    <div class="main">
+      <div class="text-center">
         <el-image :src="require('../assets/logo.png')" style="width: 250px"></el-image>
         <div>GAN.TOOTAL.XYZ</div>
-      </el-col>
-    </el-row>
+      </div>
+    </div>
     <div class="top-menu shadow-bottom">
       <gan-menu></gan-menu>
     </div>
