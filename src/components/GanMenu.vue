@@ -148,6 +148,7 @@ export default {
   position: fixed;
   top: 5px;
   right: 10px;
+  z-index: 11;
 }
 .head-menu {
   position: fixed;

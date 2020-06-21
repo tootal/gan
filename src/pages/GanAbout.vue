@@ -1,6 +1,6 @@
 <template>
   <gan-content>
-    <vue-markdown>{{ readme }}</vue-markdown>
+    <vue-markdown :prerender="prerender">{{ readme }}</vue-markdown>
     <h2>开发记录</h2>
     <el-timeline>
       <el-timeline-item
@@ -91,6 +91,10 @@ export default {
     }
   },
   methods: {
+    prerender(str) {
+      '![](public/images/20200621120348481_29735.png)'
+      return str.replace(/!\[\]\(public\/images\/(.*)\)/g, '<img src="images/$1" width="100%">');
+    },
     clearLoginCookie() {
       Cookies.remove("loginUser");
       vm.$emit("user-changed");

@@ -32,10 +32,6 @@ export default {
 .head-logo {
   position: fixed;
   top: 0;
-}
-
-.head-logo,
-.head-button {
   z-index: 11;
 }
 </style>
