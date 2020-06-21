@@ -1,3 +1,5 @@
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer")
+
 module.exports = {
   publicPath: process.env.VUE_APP_ROUTER_MODE === 'hash'
     ? ''
@@ -11,6 +13,9 @@ module.exports = {
     performance: {
       hints: false,
     },
+    plugins: [
+      new BundleAnalyzerPlugin({ analyzerPort: 8919 })
+    ]
   },
   chainWebpack: config => {
     // Text Loader

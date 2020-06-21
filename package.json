@@ -32,7 +32,8 @@
     "sass-loader": "^8.0.2",
     "text-loader": "0.0.1",
     "vue-markdown": "^2.2.4",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.11",
+    "webpack-bundle-analyzer": "^3.8.0"
   },
   "eslintConfig": {
     "root": true,

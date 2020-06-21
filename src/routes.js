@@ -1,16 +1,17 @@
 import GanIndex from './pages/GanIndex.vue'
-import GanForum from './pages/GanForum.vue'
-import GanLocation from './pages/GanLocation.vue'
-import GanError from './pages/GanError.vue'
-import GanDetail from './pages/GanDetail.vue'
-import GanPost from './pages/GanPost.vue'
-import GanAbout from './pages/GanAbout.vue'
-import GanRegister from './pages/GanRegister.vue'
-import GanLogin from './pages/GanLogin.vue'
-import GanHistory from './pages/GanHistory.vue'
-import GanCulture from './pages/GanCulture.vue'
-import GanEconomy from './pages/GanEconomy.vue'
-import GanUser from './pages/GanUser.vue'
+
+const GanForum = () => import(/* webpackChunkName: "forum" */'./pages/GanForum.vue')
+const GanLocation = () => import(/* webpackChunkName: "location" */'./pages/GanLocation.vue')
+const GanError = () => import(/* webpackChunkName: "other" */'./pages/GanError.vue')
+const GanDetail = () => import(/* webpackChunkName: "forum" */'./pages/GanDetail.vue')
+const GanPost = () => import(/* webpackChunkName: "other" */'./pages/GanPost.vue')
+const GanAbout = () => import(/* webpackChunkName: "markdown" */'./pages/GanAbout.vue')
+const GanRegister = () => import(/* webpackChunkName: "other" */'./pages/GanRegister.vue')
+const GanLogin = () => import(/* webpackChunkName: "other" */'./pages/GanLogin.vue')
+const GanHistory = () => import(/* webpackChunkName: "markdown" */'./pages/GanHistory.vue')
+const GanCulture = () => import(/* webpackChunkName: "markdown" */'./pages/GanCulture.vue')
+const GanEconomy = () => import(/* webpackChunkName: "markdown" */'./pages/GanEconomy.vue')
+const GanUser = () => import(/* webpackChunkName: "other" */'./pages/GanUser.vue')
 
 let routes = [
   {
