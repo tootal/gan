@@ -54,7 +54,7 @@ Vue.use(TimelineItem)
 import GanContent from "../layouts/GanContent.vue";
 import readme from "../../README.md";
 import VueMarkdown from "vue-markdown";
-import gitlog from "../../scripts/gitlog.txt";
+import gitlog from "../../gitlog.txt";
 import Cookies from "js-cookie";
 import vm from "../main.js";
 import axios from "axios";
