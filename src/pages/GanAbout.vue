@@ -76,8 +76,8 @@ export default {
         let c = {};
         c.commit = t[0];
         c.abbrCommit = t[0].slice(0, 7);
-        c.time = t[1];
-        c.message = t[2];
+        c.time = t[1] + ' ' + t[2];
+        c.message = t[3];
         logs.push(c);
       }
       logs[0].color = "#0bbd87";
