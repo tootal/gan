@@ -2,6 +2,7 @@
 node_modules
 /dist
 /report.html
+/scripts/gitlog.txt
 
 # local env files
 .env.local
