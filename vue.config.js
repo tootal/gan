@@ -14,7 +14,12 @@ module.exports = {
       hints: false,
     },
     plugins: [
-      new BundleAnalyzerPlugin({ analyzerPort: 8919 })
+      new BundleAnalyzerPlugin({
+        analyzerMode: 'static',
+        defaultSizes: 'gzip',
+        openAnalyzer: false,
+        reportFilename: '../report.html',
+      })
     ]
   },
   chainWebpack: config => {
