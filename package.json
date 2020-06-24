@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "scripts\\build.bat",
     "build:file": "scripts\\build-file.bat",
     "lint": "vue-cli-service lint",
     "deploy": "scripts\\deploy.bat"
