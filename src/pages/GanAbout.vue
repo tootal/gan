@@ -10,7 +10,9 @@
         :color="log.color"
         size="large"
       >
-        <span class="abbr-commit">{{log.abbrCommit}}</span>
+        <span class="abbr-commit">
+          <a target="_blank" :href="`https://github.com/tootal/gan/commit/${log.commit}`">{{log.abbrCommit}}</a>
+        </span>
         {{log.message}}
       </el-timeline-item>
       <div v-if="logsMore && logsMore.length > 0">
@@ -27,7 +29,9 @@
             :color="log.color"
             size="large"
           >
-            <span class="abbr-commit">{{log.abbrCommit}}</span>
+            <span class="abbr-commit">
+              <a target="_blank" :href="`https://github.com/tootal/gan/commit/${log.commit}`">{{log.abbrCommit}}</a>
+            </span>
             {{log.message}}
           </el-timeline-item>
         </div>
@@ -45,11 +49,11 @@
   </gan-content>
 </template>
 <script>
-import Vue from 'vue'
-import { Divider, Timeline, TimelineItem } from 'element-ui'
-Vue.use(Divider)
-Vue.use(Timeline)
-Vue.use(TimelineItem)
+import Vue from "vue";
+import { Divider, Timeline, TimelineItem } from "element-ui";
+Vue.use(Divider);
+Vue.use(Timeline);
+Vue.use(TimelineItem);
 
 import GanContent from "../layouts/GanContent.vue";
 import readme from "../../README.md";
@@ -76,7 +80,7 @@ export default {
         let c = {};
         c.commit = t[0];
         c.abbrCommit = t[0].slice(0, 7);
-        c.time = t[1] + ' ' + t[2];
+        c.time = t[1] + " " + t[2];
         c.message = t[3];
         logs.push(c);
       }
@@ -92,8 +96,11 @@ export default {
   },
   methods: {
     prerender(str) {
-      '![](public/images/20200621120348481_29735.png)'
-      return str.replace(/!\[\]\(public\/images\/(.*)\)/g, '<img src="images/$1" width="100%">');
+      "![](public/images/20200621120348481_29735.png)";
+      return str.replace(
+        /!\[\]\(public\/images\/(.*)\)/g,
+        '<img src="images/$1" width="100%">'
+      );
     },
     clearLoginCookie() {
       Cookies.remove("loginUser");
@@ -156,7 +163,7 @@ export default {
 };
 </script>
 <style scoped>
-.abbr-commit {
+.abbr-commit>a {
   color: red;
   margin-right: 5px;
 }
