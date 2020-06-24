@@ -4,5 +4,5 @@ git init
 git add .
 git commit -m "update"
 git remote add origin git@github.com:tootal/gan.git
-git push --set-upstream origin master -f
+git push --set-upstream origin master:gh-pages -f
 echo deploy successful!
