@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "build:file": "vue-cli-service build --mode file",
+    "build:file": "scripts\\build-file.bat",
     "lint": "vue-cli-service lint",
     "deploy": "scripts\\deploy.bat"
   },
