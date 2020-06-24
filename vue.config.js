@@ -8,6 +8,9 @@ module.exports = {
     index: 'src/main.js',
     404: 'src/main.js',
   },
+  devServer: {
+    open: true
+  },
   productionSourceMap: false,
   configureWebpack: {
     performance: {
