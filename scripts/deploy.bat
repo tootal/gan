@@ -1,5 +1,9 @@
 @echo off
 call npm run build
+:: Upload to Qiniu kodo
+qshell qupload scripts\upload.conf 1>NUL
+
+:: Upload to gihtub-pages
 cd dist
 git init
 git add .

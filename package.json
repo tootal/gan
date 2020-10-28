@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "scripts\\serve.cmd",
     "build": "scripts\\build.bat",
     "build:file": "scripts\\build-file.bat",
     "lint": "vue-cli-service lint",
