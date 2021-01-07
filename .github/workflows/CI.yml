@@ -25,7 +25,8 @@ jobs:
       - name: Build and Deploy static to Tencent CloudBase
         shell: cmd
         run: |
-          npm run build
+          node scripts\gitlog.js
+          call npx vue-cli-service build
           npm i -g @cloudbase/cli
           tcb login --apiKeyId ${{ secrets.SECRET_ID }} --apiKey ${{ secrets.SECRET_KEY }}
           tcb hosting deploy dist -e ${{ secrets.ENV_ID }} -r ap-guangzhou
