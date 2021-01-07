@@ -49,13 +49,13 @@ a {
   opacity: .8;
 }
 .el-card {
-  width: 240px;
-  height: 196px;
+  width: 182px;
+  height: 151px;
 }
 .video-content {
   position: relative;
-  width: 238px;
-  height: 142px;
+  width: 180px;
+  height: 112px;
 }
 .time-tag {
   position: absolute;
@@ -68,8 +68,8 @@ a {
   color: #fff;
 }
 .desc {
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 12px;
+  line-height: 14px;
   margin: 6px 2px 0 4px;
   font-weight: 400;
 }

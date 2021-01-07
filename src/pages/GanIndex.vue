@@ -72,7 +72,7 @@ h2 {
   padding: 20px 0;
   display: grid;
   justify-content: space-between;
-  grid-template-columns: repeat(auto-fill, 240px);
+  grid-template-columns: repeat(auto-fill, 182px);
 }
 .gan-video {
   margin: 5px 0px;
