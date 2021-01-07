@@ -2,7 +2,7 @@ on: [push]
 
 jobs:
   deploy:
-    runs-on: windows-2019
+    runs-on: ubuntu-20.04
     name: Tencent Cloudbase Github Action
     steps:
       - name: Checkout
@@ -23,11 +23,11 @@ jobs:
         run: npm ci
       
       - name: Build and Deploy static to Tencent CloudBase
-        shell: cmd
+        shell: bash
         run: |
-          node scripts\gitlog.js
-          call npx vue-cli-service build
-          npm i -g @cloudbase/cli
+          node scripts/gitlog.js
+          npx vue-cli-service build
+          sudo npm i -g @cloudbase/cli
           tcb login --apiKeyId ${{ secrets.SECRET_ID }} --apiKey ${{ secrets.SECRET_KEY }}
           tcb hosting deploy dist -e ${{ secrets.ENV_ID }} -r ap-guangzhou
           
