@@ -21,13 +21,11 @@ jobs:
       - name: Install Dependencies
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
-      
-      - name: Build and Deploy static to Tencent CloudBase
-        shell: bash
-        run: |
-          node scripts/gitlog.js
-          npx vue-cli-service build
-          sudo npm i -g @cloudbase/cli
-          tcb login --apiKeyId ${{ secrets.SECRET_ID }} --apiKey ${{ secrets.SECRET_KEY }}
-          tcb hosting deploy dist -e ${{ secrets.ENV_ID }} -r ap-guangzhou
+      - name: GitHub Pages
+        uses: crazy-max/ghaction-github-pages@v2.3.0
+        with:
+          target_branch: gh-pages
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
