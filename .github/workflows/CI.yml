@@ -3,7 +3,7 @@ on: [push]
 jobs:
   deploy:
     runs-on: ubuntu-20.04
-    name: Tencent Cloudbase Github Action
+    name: Gan Github Action
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -21,6 +21,11 @@ jobs:
       - name: Install Dependencies
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
+      - name: Build
+        shell: bash
+        run: |
+          node scripts/gitlog.js
+          npx vue-cli-service build
       - name: GitHub Pages
         uses: crazy-max/ghaction-github-pages@v2.3.0
         with:
@@ -28,4 +33,3 @@ jobs:
           build_dir: dist
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
