@@ -39,7 +39,7 @@ var _hmt = _hmt || [];
 window._hmt = _hmt;
 (function () {
   var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?4e69e35683f7297b606b84516aacefbf";
+  hm.src = "https://hm.baidu.com/hm.js?f3d4100a1cada8b8ff2605c8773fadde";
   var s = document.getElementsByTagName("script")[0];
   s.parentNode.insertBefore(hm, s);
 })();
